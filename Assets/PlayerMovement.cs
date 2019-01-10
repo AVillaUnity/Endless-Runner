@@ -5,15 +5,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 9.0f;
-    public float jumpSpeedBoost = 2.0f;
     public float gravity = 9.8f;
     public float defaultJumpForce = 150.0f;
     public float jumpMultiplier = 320.0f;
     public float maxJumpForce = 300.0f;
 
-
     private float jumpForce;
-    private float downwardForce = 0.0f;
+    private bool canJump = true;
+    private float verticalForce;
     private Vector3 motion;
 
     CharacterController controller;
@@ -23,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         jumpForce = defaultJumpForce;
+        verticalForce = 0.0f;
     }
 
     // Update is called once per frame
@@ -32,31 +32,42 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButton("Jump"))
         {
-            jumpForce += (jumpMultiplier * Time.deltaTime);
+            jumpForce += Time.deltaTime * jumpMultiplier;
             jumpForce = Mathf.Clamp(jumpForce, defaultJumpForce, maxJumpForce);
-        }
-        if (Input.GetButtonUp("Jump"))
-        {
-            if (controller.isGrounded)
+
+            if (canJump)
             {
-                motion.y = jumpForce;
-                motion.z += jumpSpeedBoost;
-                print("jumpforce: " + jumpForce);
+                verticalForce = jumpForce;
             }
+        }
+
+        if (Input.GetButtonUp("Jump") || jumpForce >= maxJumpForce)
+        {
+            canJump = false;
             jumpForce = defaultJumpForce;
         }
 
         if (controller.isGrounded)
         {
-            motion.y -= gravity * Time.deltaTime;
-            downwardForce = gravity;
-        }
-        else
-        {
-            downwardForce += gravity * Time.deltaTime * 2;
-            motion.y -= downwardForce;
+            canJump = true;
         }
 
+        if(verticalForce > 0)
+        {
+            verticalForce -= gravity * Time.deltaTime;
+        }
+        if(verticalForce < 0)
+        {
+            verticalForce = 0;
+        }
+
+        motion.y -= (gravity * Time.deltaTime) - (verticalForce * Time.deltaTime);
+
         controller.Move(motion * Time.deltaTime);
+    }
+
+    public void IncrementSpeed()
+    {
+        speed++;
     }
 }
