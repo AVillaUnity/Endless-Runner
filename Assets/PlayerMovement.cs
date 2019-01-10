@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     private float verticalForce;
     private Vector3 motion;
 
+    public delegate void OnDeath();
+    public OnDeath onDeath;
+
     CharacterController controller;
     
     // Start is called before the first frame update
@@ -69,5 +72,15 @@ public class PlayerMovement : MonoBehaviour
     public void IncrementSpeed()
     {
         speed++;
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(hit.point.z > transform.position.z + controller.radius)
+        {
+            //print("tz: " + transform.position.z + controller.radius + ", hz: " + hit.point.z);
+            if(onDeath != null)
+                onDeath.Invoke();
+        }
     }
 }

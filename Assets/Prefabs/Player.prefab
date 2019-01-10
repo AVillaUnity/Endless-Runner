@@ -109,8 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86fe2ac2d35efc4b811b5603d67634b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  gravity: 6000
-  defaultJumpForce: 7000
-  jumpMultiplier: 7000
-  maxJumpForce: 8000
+  speed: 10
+  gravity: 5800
+  defaultJumpForce: 6500
+  jumpMultiplier: 6500
+  maxJumpForce: 7500
