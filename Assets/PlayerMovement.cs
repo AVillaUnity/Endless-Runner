@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 9.0f;
-    public float gravity = 9.8f;
-    public float defaultJumpForce = 150.0f;
-    public float jumpMultiplier = 320.0f;
-    public float maxJumpForce = 300.0f;
+    public float defaultSpeed = 10.0f;
+    public float gravity = 5800.0f;
+    public float defaultJumpForce = 6500.0f;
+    public float jumpMultiplier = 6500.0f;
+    public float maxJumpForce = 7500.0f;
 
     private float jumpForce;
+    private float speed;
     private bool canJump = true;
     private float verticalForce;
     private Vector3 motion;
+    private float startingYPosition;
+    private CameraMovement cameraMov;
 
     public delegate void OnDeath();
     public OnDeath onDeath;
@@ -24,13 +27,19 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        cameraMov = GetComponent<CameraMovement>();
+
         jumpForce = defaultJumpForce;
+        startingYPosition = transform.position.y;
         verticalForce = 0.0f;
+        speed = defaultSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!cameraMov.CameraReadyToFollow()) { return; }
+
         motion = Vector3.forward * speed;
 
         if (Input.GetButton("Jump"))
@@ -72,6 +81,16 @@ public class PlayerMovement : MonoBehaviour
     public void IncrementSpeed()
     {
         speed++;
+    }
+
+    public void ResetPlayer()
+    {
+        speed = defaultSpeed;
+
+        Vector3 newPosition = transform.position;
+        newPosition.y = startingYPosition;
+        transform.position = newPosition;
+
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)

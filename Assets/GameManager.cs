@@ -16,23 +16,33 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    private UIManager uIManager;
+    private BuildingOffset spawnPointBuildings;
+    private bool isPaused = false;
+    private PlayerMovement player;
+
+    //private AudioSource audioSource;
+    //private bool musicPlaying = false;
+
     public bool GameStarted { get; private set; }
 
-    private UIManager uIManager;
-    //private AudioSource audioSource;
-    private bool isPaused = false;
-    //private bool musicPlaying = false;
 
     private void Start()
     {
         //audioSource = GetComponent<AudioSource>();
         uIManager = UIManager.instance;
-        uIManager.ShowSplashScreen();
+        player = GameObject.FindObjectOfType<PlayerMovement>();
+        spawnPointBuildings = GameObject.FindObjectOfType<BuildingOffset>();
+
+        GameStarted = false;
+        uIManager.ShowMainMenu();
+        //uIManager.ShowSplashScreen();
         //StartGame();
     }
 
     private void Update()
     {
+        if (!GameStarted) { return; }
         if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
         {
             PauseGame();
@@ -72,7 +82,8 @@ public class GameManager : MonoBehaviour
     public IEnumerator LoseGame()
     {
         uIManager.ShowLoseCanvas();
-        //ClearStage();
+        GameStarted = false;
+        ResetStage();
 
         yield return new WaitForSeconds(1.0f);
         Time.timeScale = 0;
@@ -83,17 +94,16 @@ public class GameManager : MonoBehaviour
         //musicPlaying = false;
         //audioSource.Stop();
         uIManager.ShowMainMenu();
-        ClearStage();
+        GameStarted = false;
+        ResetStage();
     }
 
-    void ClearStage()
+    void ResetStage()
     {
-        // To be implemented
+        player.ResetPlayer();
+        spawnPointBuildings.ChangePosition(player.transform.position);
+
     }
 
-    void ResetPlayer()
-    {
-        PlayerMovement player = GameObject.FindObjectOfType<PlayerMovement>();
-    }
 
 }
