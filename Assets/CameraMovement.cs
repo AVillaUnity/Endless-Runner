@@ -14,10 +14,9 @@ public class CameraMovement : MonoBehaviour
     public float transitionSpeed = 1.0f;
 
     private GameManager gameManager;
-    private bool transitioning = false;
-    private bool hasTransitioned = false;
-
     private Vector3 offset;
+
+    public bool Transitioning { get; private set; }
 
     private void Start()
     {
@@ -25,35 +24,39 @@ public class CameraMovement : MonoBehaviour
         transform.position = menuCamera.position;
         transform.rotation = menuCamera.rotation;
         offset = gameCamera.position - player.position;
+        Transitioning = false;
     }
 
 
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
-        if(gameManager.GameStarted && !transitioning && !hasTransitioned)
+        if(gameManager.GameStarted && !Transitioning && !AtDestination(gameCamera.position))
         {
             StartCoroutine(TransitionCamera(gameCamera));
+            Transitioning = true;
         }
 
-        if(!gameManager.GameStarted && !transitioning && !hasTransitioned)
+        if(!gameManager.GameStarted && !Transitioning && !AtDestination(menuCamera.position))
         {
             StartCoroutine(TransitionCamera(menuCamera));
+            Transitioning = true;
         }
-        
-        if(gameManager.GameStarted && hasTransitioned)
+    }
+
+    private void LateUpdate()
+    {
+        if (gameManager.GameStarted && !Transitioning)
         {
             Vector3 newPos = player.position + offset;
             newPos.y = gameCamera.position.y;
             transform.position = newPos;
         }
-       
     }
 
     IEnumerator TransitionCamera(Transform destination)
     {
-        transitioning = true;
         float timeElapsed = 0.0f;
 
         while (transform.position != destination.position || timeElapsed >= 1.0f)
@@ -64,11 +67,16 @@ public class CameraMovement : MonoBehaviour
             yield return null;
         }
 
-        hasTransitioned = true;
+        Transitioning = false;
     }
 
     public bool CameraReadyToFollow()
     {
-        return hasTransitioned && gameManager.GameStarted;
+        return !Transitioning && gameManager.GameStarted;
+    }
+
+    private bool AtDestination(Vector3 destination)
+    {
+        return transform.position == destination;
     }
 }

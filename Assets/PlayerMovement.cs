@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public float defaultJumpForce = 6500.0f;
     public float jumpMultiplier = 6500.0f;
     public float maxJumpForce = 7500.0f;
+    public CameraMovement cameraMov;
+
 
     private float jumpForce;
     private float speed;
@@ -16,29 +18,34 @@ public class PlayerMovement : MonoBehaviour
     private float verticalForce;
     private Vector3 motion;
     private float startingYPosition;
-    private CameraMovement cameraMov;
+    private CharacterController controller;
+    private GameManager gameManager;
+
 
     public delegate void OnDeath();
     public OnDeath onDeath;
 
-    CharacterController controller;
+    public float DistanceTraveled { get; set; }
+
     
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        cameraMov = GetComponent<CameraMovement>();
 
         jumpForce = defaultJumpForce;
         startingYPosition = transform.position.y;
         verticalForce = 0.0f;
         speed = defaultSpeed;
+        DistanceTraveled = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (!cameraMov.CameraReadyToFollow()) { return; }
+
+        DistanceTraveled = Time.deltaTime;
 
         motion = Vector3.forward * speed;
 
@@ -91,13 +98,14 @@ public class PlayerMovement : MonoBehaviour
         newPosition.y = startingYPosition;
         transform.position = newPosition;
 
+        DistanceTraveled = 0.0f;
+
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if(hit.point.z > transform.position.z + controller.radius)
         {
-            //print("tz: " + transform.position.z + controller.radius + ", hz: " + hit.point.z);
             if(onDeath != null)
                 onDeath.Invoke();
         }

@@ -19,4 +19,12 @@ public class BuildingOffset : MonoBehaviour
     {
         transform.position = playerPosition + Offset;
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.tag == "Building")
+        {
+            Destroy(other.gameObject);
+        }
+    }
 }

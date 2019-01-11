@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour {
 
+    #region Singleton
     public static UIManager instance;
 
     private void Awake()
@@ -11,12 +12,23 @@ public class UIManager : MonoBehaviour {
         instance = this;
     }
 
+    #endregion
+
     //public GameObject SplashScreen;
-    public GameObject WorldCanvas;
-    public GameObject MainMenuCanvas;
-    public GameObject GameCanvas;
-    public GameObject LoseCanvas;
-    public GameObject PauseCanvas;
+    public Canvas WorldCanvas;
+    public Canvas MainMenuCanvas;
+    public Canvas GameCanvas;
+    public Canvas LoseCanvas;
+    public Canvas PauseCanvas;
+
+    private void Start()
+    {
+        WorldCanvas.gameObject.SetActive(true);
+        MainMenuCanvas.gameObject.SetActive(true);
+        GameCanvas.gameObject.SetActive(true);
+        LoseCanvas.gameObject.SetActive(true);
+        PauseCanvas.gameObject.SetActive(true);
+    }
 
     //public void ShowSplashScreen()
     //{
@@ -32,43 +44,40 @@ public class UIManager : MonoBehaviour {
     public void ShowMainMenu()
     {
         //SplashScreen.SetActive(false);
-        LoseCanvas.SetActive(false);
-        GameCanvas.SetActive(false);
-        PauseCanvas.SetActive(false);
-        WorldCanvas.SetActive(false);
-        MainMenuCanvas.SetActive(true);
+        LoseCanvas.enabled = false;
+        GameCanvas.enabled = false;
+        PauseCanvas.enabled = false;
+        WorldCanvas.enabled = false;
+        MainMenuCanvas.enabled = true;
     }
 
     public void ShowGameCanvas()
     {
         //SplashScreen.SetActive(false);
-        LoseCanvas.SetActive(false);
-        GameCanvas.SetActive(true);
-        WorldCanvas.SetActive(true);
-
-        PauseCanvas.SetActive(false);
-        MainMenuCanvas.SetActive(false);
+        LoseCanvas.enabled = false;
+        GameCanvas.enabled = true;
+        PauseCanvas.enabled = false;
+        WorldCanvas.enabled = true;
+        MainMenuCanvas.enabled = false;
     }
 
     public void ShowLoseCanvas()
     {
         //SplashScreen.SetActive(false);
-        LoseCanvas.SetActive(true);
-        GameCanvas.SetActive(false);
-        WorldCanvas.SetActive(false);
-
-        PauseCanvas.SetActive(false);
-        MainMenuCanvas.SetActive(false);
+        LoseCanvas.enabled = true;
+        GameCanvas.enabled = false;
+        PauseCanvas.enabled = false;
+        WorldCanvas.enabled = false;
+        MainMenuCanvas.enabled = false;
     }
 
     public void ShowPauseCanvas()
     {
         //SplashScreen.SetActive(false);
-        LoseCanvas.SetActive(false);
-        GameCanvas.SetActive(false);
-        WorldCanvas.SetActive(true);
-
-        PauseCanvas.SetActive(true);
-        MainMenuCanvas.SetActive(false);
+        LoseCanvas.enabled = false;
+        GameCanvas.enabled = false;
+        PauseCanvas.enabled = true;
+        WorldCanvas.enabled = true;
+        MainMenuCanvas.enabled = false;
     }
 }

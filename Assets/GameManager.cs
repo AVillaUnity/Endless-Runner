@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     private BuildingOffset spawnPointBuildings;
     private bool isPaused = false;
     private PlayerMovement player;
+    private CameraMovement cameraMovement;
 
     //private AudioSource audioSource;
     //private bool musicPlaying = false;
@@ -33,6 +34,8 @@ public class GameManager : MonoBehaviour
         uIManager = UIManager.instance;
         player = GameObject.FindObjectOfType<PlayerMovement>();
         spawnPointBuildings = GameObject.FindObjectOfType<BuildingOffset>();
+        cameraMovement = Camera.main.gameObject.GetComponent<CameraMovement>();
+        player.onDeath += LoseGame;
 
         GameStarted = false;
         uIManager.ShowMainMenu();
@@ -51,6 +54,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        if (cameraMovement.Transitioning) { return; }
+
         //if (!musicPlaying)
         //{
         //    audioSource.Play();
@@ -79,21 +84,22 @@ public class GameManager : MonoBehaviour
         isPaused = false;
     }
 
-    public IEnumerator LoseGame()
+    public void LoseGame()
     {
+        if (cameraMovement.Transitioning) { return; }
         uIManager.ShowLoseCanvas();
         GameStarted = false;
         ResetStage();
-
-        yield return new WaitForSeconds(1.0f);
-        Time.timeScale = 0;
     }
 
     public void BackToMenu()
     {
+        if (cameraMovement.Transitioning) { return; }
+
         //musicPlaying = false;
         //audioSource.Stop();
         uIManager.ShowMainMenu();
+        Time.timeScale = 1.0f;
         GameStarted = false;
         ResetStage();
     }
@@ -102,8 +108,8 @@ public class GameManager : MonoBehaviour
     {
         player.ResetPlayer();
         spawnPointBuildings.ChangePosition(player.transform.position);
-
     }
+
 
 
 }
