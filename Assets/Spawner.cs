@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BuildingPooler))]
 public class Spawner : MonoBehaviour
 {
     public float buildingLength = 7.5f;
     public float gapSpace = 3.0f;
     public int maxBuildingsSpawned = 16;
+    public GameObject[] objectToSpawn;
 
     private int lastBuildingSpawned = -1;
-    private BuildingPooler buildingPooler;
 
     protected float spawnLocation = 0.0f;
     protected List<GameObject> spawnedBuildings;
@@ -19,7 +18,6 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
-        buildingPooler = GetComponent<BuildingPooler>();
         player = GameObject.FindGameObjectWithTag("Player");
         spawnedBuildings = new List<GameObject>();
         for(int i = 0; i < maxBuildingsSpawned; i++)
@@ -32,7 +30,7 @@ public class Spawner : MonoBehaviour
     {
         if(player.transform.position.z > spawnLocation - (maxBuildingsSpawned * buildingLength))
         {
-            ReplaceBuilding();
+            SpawnBuilding();
             DeleteBuilding();
         }
         
@@ -40,14 +38,9 @@ public class Spawner : MonoBehaviour
 
     public virtual void SpawnBuilding()
     {
-        GameObject[] objectToSpawn = buildingPooler.objectToSpawn;
         int index = GetRandomBuilding(objectToSpawn.Length);
 
-        GameObject building = buildingPooler.GetObject(index);
-
-        building.transform.position = transform.forward * spawnLocation;
-        building.transform.rotation = Quaternion.identity;
-        building.SetActive(true);
+        GameObject building = Instantiate(objectToSpawn[index], transform.forward * spawnLocation, Quaternion.identity, transform);
 
         spawnLocation += buildingLength + gapSpace;
         lastBuildingSpawned = index;
@@ -65,32 +58,9 @@ public class Spawner : MonoBehaviour
         return index;
     }
 
-    private void ReplaceBuilding()
+    public virtual void DeleteBuilding()
     {
-        GameObject[] objectToSpawn = buildingPooler.objectToSpawn;
-        int index = GetRandomBuilding(objectToSpawn.Length);
-
-        for(int i = 0; i < spawnedBuildings.Count; i++)
-        {
-            if(spawnedBuildings[i].tag == objectToSpawn[index].tag)
-            {
-                GameObject newBuilding = spawnedBuildings[i];
-                newBuilding.transform.position = transform.forward * spawnLocation;
-                newBuilding.transform.rotation = Quaternion.identity;
-                newBuilding.SetActive(true);
-
-                spawnedBuildings.Add(newBuilding);
-                spawnLocation += buildingLength + gapSpace;
-                lastBuildingSpawned = index;
-
-                break;
-            }
-        }
-    }
-
-    public void DeleteBuilding()
-    {
-        spawnedBuildings[0].SetActive(false);
+        Destroy(spawnedBuildings[0]);
         spawnedBuildings.RemoveAt(0);
     }
 }

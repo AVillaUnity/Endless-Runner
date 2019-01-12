@@ -98,13 +98,8 @@ public class ScoreManager : MonoBehaviour
 
     void CalculateDisplayOffset()
     {
-        print("Calculating new Offset...");
         float currentZPosition = player.transform.position.z;
         highscorePositionOffset = currentZPosition - player.StartingPosition.z;
-
-        Debug.Log(string.Format("Current Z position of Player: {0} | player starting position.z: {1} | highscorePositionOffset: {2}", currentZPosition, player.StartingPosition.z, highscorePositionOffset));
-        //Debug.Log(string.Format("displayPlaced: {0} | highScorePositionOffset {1}", displayPlaced, highscorePositionOffset));
-
 
         PlayerPrefsManager.SetOffsetZ(highscorePositionOffset);
     }

@@ -13,7 +13,6 @@ public class BuildingPooler : MonoBehaviour
     void Start()
     {
         objectList = new List<GameObject>();
-
         for (int i = 0; i < initialNumOfObjects; i++)
         {
             CreateObject(objectToSpawn[i % objectToSpawn.Length]);

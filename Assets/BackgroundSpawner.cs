@@ -44,4 +44,10 @@ public class BackgroundSpawner : Spawner
             DeleteBuilding();
         }
     }
+
+    public override void DeleteBuilding()
+    {
+        spawnedBuildings[0].SetActive(false);
+        spawnedBuildings.RemoveAt(0);
+    }
 }
