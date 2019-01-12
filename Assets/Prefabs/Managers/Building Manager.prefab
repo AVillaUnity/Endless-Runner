@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8415913305944959364}
+  - component: {fileID: 8186035302391748613}
   - component: {fileID: 8415913305944959363}
   m_Layer: 0
   m_Name: Building Manager
@@ -31,6 +32,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8186035302391748613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8415913305944959362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbed3e39b20b32f458bb88975c41762b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialNumOfObjects: 16
+  objectToSpawn:
+  - {fileID: 7707164871016917981, guid: 3ffface17bb88914591d5c3d168e58ae, type: 3}
+  - {fileID: 7484642079279912649, guid: f3822399f033b6f4d856db30bb072a5d, type: 3}
+  - {fileID: 3671558235502230906, guid: 7815a1af95395e64f97c64a5cc8c53ff, type: 3}
+  objectParent: {fileID: 8415913305944959364}
 --- !u!114 &8415913305944959363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43,10 +62,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c0b1ab31e873f14181012f5e8239405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingPrefabs:
-  - {fileID: 7707164871016917981, guid: 3ffface17bb88914591d5c3d168e58ae, type: 3}
-  - {fileID: 7484642079279912649, guid: f3822399f033b6f4d856db30bb072a5d, type: 3}
-  - {fileID: 3671558235502230906, guid: 7815a1af95395e64f97c64a5cc8c53ff, type: 3}
   buildingLength: 7.5
   gapSpace: 3
   maxBuildingsSpawned: 16

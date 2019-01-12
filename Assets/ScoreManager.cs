@@ -58,7 +58,6 @@ public class ScoreManager : MonoBehaviour
 
     private void PlaceDisplayObject()
     {
-        print("placing display object...");
         Vector3 newPosition = highscoreDisplay.transform.position;
         newPosition.z = player.transform.position.z + highscorePositionOffset;
         highscoreDisplay.transform.position = newPosition;

@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class CarSpawner : MonoBehaviour
 {
-    public GameObject carPrefab;
-    public Transform carHolder;
     public float rollSpawnDiceEvery = 2.0f;
+    public ObjectPooler objectPooler;
 
     private float timeElapsed = 0.0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
-    // Update is called once per frame
     void Update()
     {
         timeElapsed += Time.deltaTime;
@@ -24,10 +18,19 @@ public class CarSpawner : MonoBehaviour
             float randomNum = Random.Range(0.0f, 1.0f);
             if (randomNum > 0.5f)
             {
-                Instantiate(carPrefab, transform.position, transform.rotation, carHolder);
+                SpawnCar();
             }
             timeElapsed = 0.0f;
         }
         
     }
+
+    private void SpawnCar()
+    {
+        GameObject car = objectPooler.GetObject();
+        car.transform.position = transform.position;
+        car.transform.rotation = transform.rotation;
+        car.SetActive(true);
+    }
+
 }

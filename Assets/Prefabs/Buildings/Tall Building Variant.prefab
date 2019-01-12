@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tall Building Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7707164871016917981, guid: 3ffface17bb88914591d5c3d168e58ae,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tall Building
+      objectReference: {fileID: 0}
     - target: {fileID: 1196803415014263491, guid: 3ffface17bb88914591d5c3d168e58ae,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -26,7 +26,7 @@ public class BuildingOffset : MonoBehaviour
     {
         if(other.gameObject.tag == "Building")
         {
-            Destroy(other.gameObject);
+            other.transform.parent.gameObject.SetActive(false);
         }
     }
 }

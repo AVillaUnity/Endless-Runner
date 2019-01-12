@@ -1912,6 +1912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1040719478}
   - component: {fileID: 1040719479}
+  - component: {fileID: 1040719480}
   m_Layer: 0
   m_Name: Car Spawners
   m_TagString: Untagged
@@ -1949,6 +1950,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 572282368}
+--- !u!114 &1040719480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040719477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6207b5d5f74294a82859043d660f0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialNumOfObjects: 10
+  objectToSpawn: {fileID: 4309108470460900485, guid: 09ff4f86d0731e94891b7f2ee3b0d5f9,
+    type: 3}
+  objectParent: {fileID: 534025582}
 --- !u!1 &1050520987
 GameObject:
   m_ObjectHideFlags: 0
@@ -2059,6 +2076,11 @@ PrefabInstance:
       propertyPath: carHolder
       value: 
       objectReference: {fileID: 534025582}
+    - target: {fileID: 1924468878457940199, guid: 707c923c8f312214aa533fa99b448355,
+        type: 3}
+      propertyPath: objectPooler
+      value: 
+      objectReference: {fileID: 1040719480}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 707c923c8f312214aa533fa99b448355, type: 3}
 --- !u!1 &1114302349
@@ -3469,6 +3491,11 @@ PrefabInstance:
       propertyPath: carHolder
       value: 
       objectReference: {fileID: 534025582}
+    - target: {fileID: 1924468878457940199, guid: 707c923c8f312214aa533fa99b448355,
+        type: 3}
+      propertyPath: objectPooler
+      value: 
+      objectReference: {fileID: 1040719480}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 707c923c8f312214aa533fa99b448355, type: 3}
 --- !u!81 &7705043491461220640

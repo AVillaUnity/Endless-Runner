@@ -2,27 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ObjectPooler))]
 public class BackgroundSpawner : Spawner
 {
-    public GameObject backgroundBuildings;
     public float playerOffset = 50.0f;
+
+    private ObjectPooler objectPooler;
 
     // Start is called before the first frame update
     public override void Start()
     {
-        base.Start();
+        objectPooler = GetComponent<ObjectPooler>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        spawnedBuildings = new List<GameObject>();
+        for (int i = 0; i < maxBuildingsSpawned; i++)
+        {
+            SpawnBuilding();
+        }
     }
 
     public override void SpawnBuilding()
     {
         Vector3 spawnPoint = transform.position;
         spawnPoint.z += spawnLocation;
-        GameObject buildings = Instantiate(backgroundBuildings, spawnPoint, Quaternion.identity, transform);
+
+        GameObject buildings = objectPooler.GetObject();
+
+        buildings.transform.position = spawnPoint;
+        buildings.transform.rotation = Quaternion.identity;
+        buildings.SetActive(true);
+
         spawnedBuildings.Add(buildings);
         spawnLocation += buildingLength + gapSpace;
     }
 
-    // Update is called once per frame
     public override void Update()
     {
         if (player.transform.position.z - playerOffset> spawnLocation - (maxBuildingsSpawned * buildingLength))

@@ -8,7 +8,7 @@ public class DestroyCar : MonoBehaviour
     {
         if (other.GetComponent<DriveCar>())
         {
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 }

@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BuildingPooler))]
 public class Spawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject[] buildingPrefabs;
+    public float buildingLength = 7.5f;
+    public float gapSpace = 3.0f;
+    public int maxBuildingsSpawned = 16;
 
-    public float buildingLength = 5.0f;
-    public float gapSpace = 0.5f;
-    public int maxBuildingsSpawned = 3;
+    private int lastBuildingSpawned = -1;
+    private BuildingPooler buildingPooler;
 
     protected float spawnLocation = 0.0f;
-    private int lastBuildingSpawned = -1;
     protected List<GameObject> spawnedBuildings;
     protected GameObject player;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
+        buildingPooler = GetComponent<BuildingPooler>();
         player = GameObject.FindGameObjectWithTag("Player");
         spawnedBuildings = new List<GameObject>();
         for(int i = 0; i < maxBuildingsSpawned; i++)
@@ -31,7 +32,7 @@ public class Spawner : MonoBehaviour
     {
         if(player.transform.position.z > spawnLocation - (maxBuildingsSpawned * buildingLength))
         {
-            SpawnBuilding();
+            ReplaceBuilding();
             DeleteBuilding();
         }
         
@@ -39,20 +40,57 @@ public class Spawner : MonoBehaviour
 
     public virtual void SpawnBuilding()
     {
-        int index = Random.Range(0, buildingPrefabs.Length);
-        while(index == lastBuildingSpawned)
-        {
-            index = Random.Range(0, buildingPrefabs.Length);
-        }
-        GameObject building = Instantiate(buildingPrefabs[index], transform.forward * spawnLocation, Quaternion.identity, transform);
+        GameObject[] objectToSpawn = buildingPooler.objectToSpawn;
+        int index = GetRandomBuilding(objectToSpawn.Length);
+
+        GameObject building = buildingPooler.GetObject(index);
+
+        building.transform.position = transform.forward * spawnLocation;
+        building.transform.rotation = Quaternion.identity;
+        building.SetActive(true);
+
         spawnLocation += buildingLength + gapSpace;
         lastBuildingSpawned = index;
         spawnedBuildings.Add(building);
     }
 
+    private int GetRandomBuilding(int numOfObjects)
+    {
+        int index = Random.Range(0, numOfObjects);
+        while (index == lastBuildingSpawned)
+        {
+            index = Random.Range(0, numOfObjects);
+        }
+
+        return index;
+    }
+
+    private void ReplaceBuilding()
+    {
+        GameObject[] objectToSpawn = buildingPooler.objectToSpawn;
+        int index = GetRandomBuilding(objectToSpawn.Length);
+
+        for(int i = 0; i < spawnedBuildings.Count; i++)
+        {
+            if(spawnedBuildings[i].tag == objectToSpawn[index].tag)
+            {
+                GameObject newBuilding = spawnedBuildings[i];
+                newBuilding.transform.position = transform.forward * spawnLocation;
+                newBuilding.transform.rotation = Quaternion.identity;
+                newBuilding.SetActive(true);
+
+                spawnedBuildings.Add(newBuilding);
+                spawnLocation += buildingLength + gapSpace;
+                lastBuildingSpawned = index;
+
+                break;
+            }
+        }
+    }
+
     public void DeleteBuilding()
     {
-        Destroy(spawnedBuildings[0]);
+        spawnedBuildings[0].SetActive(false);
         spawnedBuildings.RemoveAt(0);
     }
 }

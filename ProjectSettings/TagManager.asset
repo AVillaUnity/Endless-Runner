@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Building
+  - Short Building
+  - Medium Building
+  - Tall Building
   layers:
   - Default
   - TransparentFX
