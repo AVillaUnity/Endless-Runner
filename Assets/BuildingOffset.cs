@@ -6,12 +6,14 @@ public class BuildingOffset : MonoBehaviour
 {
 
     private GameObject player;
+    private CameraMovement cm;
 
     public Vector3 Offset { get; private set; }
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        cm = Camera.main.gameObject.GetComponent<CameraMovement>();
         Offset = transform.position - player.transform.position;
     }
 

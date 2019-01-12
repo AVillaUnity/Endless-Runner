@@ -86,10 +86,9 @@ public class GameManager : MonoBehaviour
 
     public void LoseGame()
     {
-        if (cameraMovement.Transitioning) { return; }
         uIManager.ShowLoseCanvas();
         GameStarted = false;
-        ResetStage();
+        StartCoroutine(ResetStage());
     }
 
     public void BackToMenu()
@@ -101,11 +100,12 @@ public class GameManager : MonoBehaviour
         uIManager.ShowMainMenu();
         Time.timeScale = 1.0f;
         GameStarted = false;
-        ResetStage();
+        StartCoroutine(ResetStage());
     }
 
-    void ResetStage()
+    IEnumerator ResetStage()
     {
+        yield return new WaitForSeconds(cameraMovement.transitionSpeed);
         player.ResetPlayer();
         spawnPointBuildings.ChangePosition(player.transform.position);
     }

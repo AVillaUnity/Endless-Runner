@@ -10,7 +10,7 @@ public class CameraMovement : MonoBehaviour
     public Transform menuCamera;
     public Transform gameCamera;
 
-    [Range(1.0f, 5.0f)]
+    [Range(0.1f, 5.0f)]
     public float transitionSpeed = 1.0f;
 
     private GameManager gameManager;
@@ -34,15 +34,16 @@ public class CameraMovement : MonoBehaviour
     {
         if(gameManager.GameStarted && !Transitioning && !AtDestination(gameCamera.position))
         {
-            StartCoroutine(TransitionCamera(gameCamera));
             Transitioning = true;
+            StartCoroutine(TransitionCamera(gameCamera));
         }
 
         if(!gameManager.GameStarted && !Transitioning && !AtDestination(menuCamera.position))
         {
-            StartCoroutine(TransitionCamera(menuCamera));
             Transitioning = true;
+            StartCoroutine(TransitionCamera(menuCamera));
         }
+
     }
 
     private void LateUpdate()
@@ -59,11 +60,15 @@ public class CameraMovement : MonoBehaviour
     {
         float timeElapsed = 0.0f;
 
-        while (transform.position != destination.position || timeElapsed >= 1.0f)
+        Vector3 oldPosition = transform.position;
+        Quaternion oldRotation = transform.rotation;
+        while (transform.position != destination.position || timeElapsed < 1.0f)
         {
-            transform.position = Vector3.Lerp(transform.position, destination.position, timeElapsed);
-            transform.rotation = Quaternion.Lerp(transform.rotation, destination.rotation, timeElapsed);
+            transform.position = Vector3.Lerp(oldPosition, destination.position, timeElapsed);
+            transform.rotation = Quaternion.Lerp(oldRotation, destination.rotation, timeElapsed);
             timeElapsed += Time.deltaTime * (1 / transitionSpeed);
+            Transitioning = true;
+            //print(timeElapsed);
             yield return null;
         }
 
@@ -72,7 +77,7 @@ public class CameraMovement : MonoBehaviour
 
     public bool CameraReadyToFollow()
     {
-        return !Transitioning && gameManager.GameStarted;
+        return AtDestination(gameCamera.position) && gameManager.GameStarted;
     }
 
     private bool AtDestination(Vector3 destination)

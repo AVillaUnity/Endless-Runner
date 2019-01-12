@@ -20,32 +20,45 @@ public class PlayerMovement : MonoBehaviour
     private float startingYPosition;
     private CharacterController controller;
     private GameManager gameManager;
+    private float lastZPosition;
 
 
     public delegate void OnDeath();
     public OnDeath onDeath;
 
     public float DistanceTraveled { get; set; }
+    public bool PlayerMoving { get; private set; }
+    public Vector3 StartingPosition { get; set; }
 
     
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        gameManager = GameManager.instance;
 
         jumpForce = defaultJumpForce;
         startingYPosition = transform.position.y;
+        StartingPosition = transform.position;
         verticalForce = 0.0f;
         speed = defaultSpeed;
         DistanceTraveled = 0.0f;
+        PlayerMoving = false;
+        lastZPosition = transform.position.z;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!cameraMov.CameraReadyToFollow()) { return; }
+        if (!cameraMov.CameraReadyToFollow())
+        {
+            PlayerMoving = false;
+            return;
+        }
+        PlayerMoving = true;
 
-        DistanceTraveled = Time.deltaTime;
+        DistanceTraveled = transform.position.z - lastZPosition;
+        lastZPosition = transform.position.z;
 
         motion = Vector3.forward * speed;
 
@@ -98,6 +111,9 @@ public class PlayerMovement : MonoBehaviour
         newPosition.y = startingYPosition;
         transform.position = newPosition;
 
+        // Used to calculate where the highscore object will be placed
+        StartingPosition = transform.position;
+
         DistanceTraveled = 0.0f;
 
     }
@@ -107,7 +123,9 @@ public class PlayerMovement : MonoBehaviour
         if(hit.point.z > transform.position.z + controller.radius)
         {
             if(onDeath != null)
+            {
                 onDeath.Invoke();
+            }
         }
     }
 }
