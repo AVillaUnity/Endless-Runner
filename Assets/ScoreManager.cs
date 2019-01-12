@@ -6,7 +6,9 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
-    public TextMeshPro highScoreText;
+    public TextMeshProUGUI menuHighscoreText;
+    public TextMeshProUGUI loseMenuHighscoreText;
+    public TextMeshPro worldHighscoreText;
     public GameObject highscoreDisplay;
 
     private float score = 0.0f;
@@ -24,7 +26,7 @@ public class ScoreManager : MonoBehaviour
         gameManager = GameManager.instance;
 
         highScore = PlayerPrefsManager.GetHighscore();
-        highScoreText.text = FormatFloat(highScore).ToString();
+        UdpateHighScoreText();
         scoreText.text = FormatFloat(score).ToString();
 
         player = GameObject.FindObjectOfType<PlayerMovement>();
@@ -82,10 +84,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (score > highScore)
         {
-            float previousHighscore = highScore;
-            highScore = score;
-            PlayerPrefsManager.SetHighscore(highScore);
-            highScoreText.text = FormatFloat(highScore).ToString();
+            UpdateHighscore();
             CalculateDisplayOffset();
         }
 
@@ -94,6 +93,21 @@ public class ScoreManager : MonoBehaviour
         nextLevelAt = 100;
         scoreText.text = FormatFloat(score).ToString();
         displayPlaced = false;
+    }
+
+    private void UpdateHighscore()
+    {
+        float previousHighscore = highScore;
+        highScore = score;
+        PlayerPrefsManager.SetHighscore(highScore);
+        UdpateHighScoreText();
+    }
+
+    private void UdpateHighScoreText()
+    {
+        worldHighscoreText.text = FormatFloat(highScore).ToString();
+        menuHighscoreText.text = worldHighscoreText.text;
+        loseMenuHighscoreText.text = worldHighscoreText.text;
     }
 
     void CalculateDisplayOffset()
@@ -114,7 +128,7 @@ public class ScoreManager : MonoBehaviour
         PlayerPrefsManager.SetHighscore(0);
         PlayerPrefsManager.SetOffsetZ(0);
         highScore = 0.0f;
-        highScoreText.text = FormatFloat(highScore).ToString();
+        UdpateHighScoreText();
         highscorePositionOffset = 0;
         highscoreDisplay.SetActive(false);
     }
