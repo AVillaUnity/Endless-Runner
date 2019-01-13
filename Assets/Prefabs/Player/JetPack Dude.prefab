@@ -125,9 +125,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSpeed: 10
-  gravity: 1000
-  verticalForce: 300000
-  maxJumpForce: 1250
+  initialGravity: 2500
+  maxVerticalForce: 3000
+  initialJumpForce: 1000
+  maxHeight: 20
   cameraMov: {fileID: 0}
 --- !u!114 &1228664608
 MonoBehaviour:

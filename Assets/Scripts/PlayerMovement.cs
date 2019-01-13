@@ -5,15 +5,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float defaultSpeed = 10.0f;
-    public float gravity = 5800.0f;
-    public float verticalForce = 6500.0f;
-    public float maxJumpForce = 7500.0f;
+    public float initialGravity = 2500.0f;
+    public float maxVerticalForce = 2000.0f;
+    public float initialJumpForce = 2000.0f;
+    public float maxHeight = 17.0f;
     public CameraMovement cameraMov;
 
 
     private float jumpForce = 0.0f;
+    private float gravity;
     private float speed;
-    private bool canJump = true;
     private Vector3 motion;
     private float startingYPosition;
     private CharacterController controller;
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         DistanceTraveled = 0.0f;
         PlayerMoving = false;
         lastZPosition = transform.position.z;
+        gravity = initialGravity;
     }
 
     // Update is called once per frame
@@ -56,24 +58,31 @@ public class PlayerMovement : MonoBehaviour
 
         // Started Jump change
 
-        jumpForce += Time.deltaTime * verticalForce * Input.GetAxisRaw("Jump") * (jetPack.CurrentFuel / jetPack.MaxFuel);
-        jumpForce = Mathf.Clamp(jumpForce, 0, maxJumpForce);
+        jumpForce += (jetPack.CurrentFuel / jetPack.MaxFuel) * ((Time.deltaTime * Input.GetAxis("Jump")) + (initialJumpForce * Input.GetAxisRaw("Jump")));
+        jumpForce = Mathf.Clamp(jumpForce, 0, maxVerticalForce);
 
-        print(jumpForce);
-
-        if (Input.GetButton("Jump"))
+        if (Input.GetButton("Jump") && jetPack.CurrentFuel > 0)
         {
+            gravity -= Time.deltaTime * initialGravity;
             jetPack.DecreaseFuel();
         }
-
-        if(jumpForce > 0)
+        else
         {
-            jumpForce -= gravity * Time.deltaTime;
+            gravity = initialGravity;
         }
+
+        jumpForce = (jumpForce > 0) ? jumpForce - (gravity * Time.deltaTime * 2) : 0.0f;
 
         motion.y -= (gravity * Time.deltaTime) - (jumpForce * Time.deltaTime);
 
+        
+
         controller.Move(motion * Time.deltaTime);
+
+        Vector3 newPosition = transform.position;
+        newPosition.y = Mathf.Clamp(newPosition.y, 0, maxHeight);
+        transform.position = newPosition;
+
     }
 
     public void IncrementSpeed()
@@ -84,7 +93,6 @@ public class PlayerMovement : MonoBehaviour
     public void ResetPlayer()
     {
         speed = defaultSpeed;
-
         Vector3 newPosition = transform.position;
         newPosition.y = startingYPosition;
         transform.position = newPosition;
