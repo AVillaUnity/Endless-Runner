@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &949014657253686548
+--- !u!1001 &6342941149599110823
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,12 +10,12 @@ PrefabInstance:
     - target: {fileID: 7707164871016917981, guid: 3ffface17bb88914591d5c3d168e58ae,
         type: 3}
       propertyPath: m_Name
-      value: Medium Building Variant
+      value: Tall Building Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7707164871016917981, guid: 3ffface17bb88914591d5c3d168e58ae,
         type: 3}
       propertyPath: m_TagString
-      value: Medium Building
+      value: Tall Building
       objectReference: {fileID: 0}
     - target: {fileID: 1196803415014263491, guid: 3ffface17bb88914591d5c3d168e58ae,
         type: 3}
@@ -75,12 +75,27 @@ PrefabInstance:
     - target: {fileID: 9039186243770011328, guid: 3ffface17bb88914591d5c3d168e58ae,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 12.5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9039186243770011328, guid: 3ffface17bb88914591d5c3d168e58ae,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.25
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089684846500210133, guid: 3ffface17bb88914591d5c3d168e58ae,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075426350343792912, guid: 3ffface17bb88914591d5c3d168e58ae,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3649289475555453714, guid: 3ffface17bb88914591d5c3d168e58ae,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ffface17bb88914591d5c3d168e58ae, type: 3}

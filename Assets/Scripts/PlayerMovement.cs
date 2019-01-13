@@ -118,14 +118,31 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    //private void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
+    //    if (hit.gameObject.GetComponent<Fuel>())
+    //    {
+    //        print("We got Fuel");
+    //        return;
+    //    }
+
+    //    if (hit.point.z >= transform.position.z + controller.radius)
+    //    {
+    //        if (onDeath != null)
+    //        {
+    //            onDeath.Invoke();
+    //        }
+    //        print(hit.point.z + " " + transform.position.z + " " + controller.radius + " " + transform.position.z + controller.radius);
+
+    //    }
+    //}
+
+    public void Die()
     {
-        if(hit.point.z > transform.position.z + controller.radius)
+        if (onDeath != null)
         {
-            if(onDeath != null)
-            {
-                onDeath.Invoke();
-            }
+            onDeath.Invoke();
         }
     }
+
 }

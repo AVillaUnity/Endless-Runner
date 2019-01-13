@@ -99,4 +99,4 @@ MonoBehaviour:
   player: {fileID: 0}
   menuCamera: {fileID: 0}
   gameCamera: {fileID: 0}
-  transitionSpeed: 1
+  transitionSpeed: 0.5

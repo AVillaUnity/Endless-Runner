@@ -835,7 +835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6762668025022813950}
   m_Layer: 0
-  m_Name: Foreground Row 2
+  m_Name: Foreground Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
