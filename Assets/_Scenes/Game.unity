@@ -55,9 +55,9 @@ LightmapSettings:
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 10
-    m_Resolution: 0.02
-    m_BakeResolution: 1
-    m_AtlasSize: 1024
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 512
     m_AO: 1
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -66,7 +66,7 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 15204, guid: 0000000000000000f000000000000000,
       type: 0}
     m_LightmapsBakeMode: 1
-    m_TextureCompression: 1
+    m_TextureCompression: 0
     m_FinalGather: 0
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
@@ -781,6 +781,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Highscore Object
       objectReference: {fileID: 0}
+    - target: {fileID: 5523006586278637186, guid: cf44a1c3d65787d4b910ea643bcb8ffd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5523006586278637185, guid: cf44a1c3d65787d4b910ea643bcb8ffd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -819,7 +824,7 @@ PrefabInstance:
     - target: {fileID: 5523006586278637185, guid: cf44a1c3d65787d4b910ea643bcb8ffd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5523006586278637185, guid: cf44a1c3d65787d4b910ea643bcb8ffd,
         type: 3}
@@ -1206,7 +1211,7 @@ Transform:
   - {fileID: 657780130}
   - {fileID: 398630279}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &534025581
 GameObject:
@@ -2020,7 +2025,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &908786327
 GameObject:
@@ -2290,7 +2295,7 @@ Transform:
   - {fileID: 217211861}
   - {fileID: 7705043491461220654}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1097861177
 PrefabInstance:
@@ -3316,7 +3321,7 @@ PrefabInstance:
     - target: {fileID: 6110852829078519383, guid: 7ec2edb8dbc85c24fa6a57ec7cda8b45,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6110852829078519383, guid: 7ec2edb8dbc85c24fa6a57ec7cda8b45,
         type: 3}
@@ -4350,12 +4355,12 @@ PrefabInstance:
     - target: {fileID: 1709738442909601787, guid: 99d9f7395466675428f42cb7bf6ad286,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.737
+      value: 13.72
       objectReference: {fileID: 0}
     - target: {fileID: 1709738442909601787, guid: 99d9f7395466675428f42cb7bf6ad286,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.13
+      value: -13.33
       objectReference: {fileID: 0}
     - target: {fileID: 1709738442909601787, guid: 99d9f7395466675428f42cb7bf6ad286,
         type: 3}
@@ -4431,6 +4436,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Height
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558802559460439352, guid: 99d9f7395466675428f42cb7bf6ad286,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558802559460439352, guid: 99d9f7395466675428f42cb7bf6ad286,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5470308060162853155, guid: 99d9f7395466675428f42cb7bf6ad286,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99d9f7395466675428f42cb7bf6ad286, type: 3}
