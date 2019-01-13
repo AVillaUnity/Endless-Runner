@@ -58,7 +58,8 @@ public class PlayerMovement : MonoBehaviour
 
         // Started Jump change
 
-        jumpForce += (jetPack.CurrentFuel / jetPack.MaxFuel) * ((Time.deltaTime * Input.GetAxis("Jump")) + (initialJumpForce * Input.GetAxisRaw("Jump")));
+        float hasFuel = (jetPack.CurrentFuel > 0) ? 1.0f : 0.0f;
+        jumpForce += hasFuel * ((Time.deltaTime * Input.GetAxis("Jump")) + (initialJumpForce * Input.GetAxisRaw("Jump")));
         jumpForce = Mathf.Clamp(jumpForce, 0, maxVerticalForce);
 
         if (Input.GetButton("Jump") && jetPack.CurrentFuel > 0)

@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd9c46c4005f8b47ab1fe72805ee144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  percentToDropFuel: 50
+  percentToDropFuel: 100
   fuel: {fileID: 1919633864209010970, guid: 264b09030d82d0840af0a2687aeea6b3, type: 3}
   spawnPoints:
   - {fileID: 9089684846500210133}

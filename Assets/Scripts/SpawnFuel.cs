@@ -14,7 +14,7 @@ public class SpawnFuel : MonoBehaviour
         float chance = Random.Range(0.0f, 1.0f);
         int spawnPoint = Random.Range(0, spawnPoints.Length);
 
-        if(chance > 1 - (percentToDropFuel / 100))
+        if(chance >= 1 - (percentToDropFuel / 100.0f))
         {
             Instantiate(fuel, spawnPoints[spawnPoint].position, Quaternion.identity, spawnPoints[spawnPoint]);
         }
