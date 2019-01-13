@@ -24,13 +24,13 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.instance;
+        gameManager.onReset += ResetTimer;
 
         highScore = PlayerPrefsManager.GetHighscore();
         UdpateHighScoreText();
         scoreText.text = FormatFloat(score).ToString();
 
         player = GameObject.FindObjectOfType<PlayerMovement>();
-        player.onDeath += ResetTimer;
 
         GetInitialOffset();
         //ResetHighScore();

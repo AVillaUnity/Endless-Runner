@@ -1628,7 +1628,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1522714811}
         m_MethodName: BackToMenu
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3946,14 +3946,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1522714811}
         m_MethodName: BackToMenu
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -4402,56 +4402,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1709738442909601787, guid: 99d9f7395466675428f42cb7bf6ad286,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.42641288
-      objectReference: {fileID: 0}
-    - target: {fileID: 1709738442909601787, guid: 99d9f7395466675428f42cb7bf6ad286,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.42641288
-      objectReference: {fileID: 0}
-    - target: {fileID: 1709738442909601787, guid: 99d9f7395466675428f42cb7bf6ad286,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.42641288
-      objectReference: {fileID: 0}
     - target: {fileID: 1709738442909601791, guid: 99d9f7395466675428f42cb7bf6ad286,
         type: 3}
       propertyPath: cameraMov
       value: 
       objectReference: {fileID: 1223246158}
-    - target: {fileID: 7344646228485524449, guid: 99d9f7395466675428f42cb7bf6ad286,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344646228485524449, guid: 99d9f7395466675428f42cb7bf6ad286,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 7405331409225343018, guid: 99d9f7395466675428f42cb7bf6ad286,
-        type: 3}
-      propertyPath: m_Height
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7558802559460439352, guid: 99d9f7395466675428f42cb7bf6ad286,
-        type: 3}
-      propertyPath: m_ReflectionProbeUsage
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7558802559460439352, guid: 99d9f7395466675428f42cb7bf6ad286,
-        type: 3}
-      propertyPath: m_LightProbeUsage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5470308060162853155, guid: 99d9f7395466675428f42cb7bf6ad286,
-        type: 3}
-      propertyPath: m_ReflectionProbeUsage
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99d9f7395466675428f42cb7bf6ad286, type: 3}
 --- !u!4 &1709738442909601787 stripped

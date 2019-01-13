@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class CheckCollision : MonoBehaviour
 {
-    private PlayerMovement playerMovement;
+    private GameManager gameManager;
 
     private void Start()
     {
-        playerMovement = GetComponentInParent<PlayerMovement>();
+        gameManager = GameManager.instance;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -19,7 +19,7 @@ public class CheckCollision : MonoBehaviour
         if (other.gameObject.tag == "Building")
         {
             //print("we dead");
-            playerMovement.Die();
+            gameManager.LoseGame();
         }
     }
 }

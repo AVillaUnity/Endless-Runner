@@ -6,25 +6,19 @@ public class PlayerMovement : MonoBehaviour
 {
     public float defaultSpeed = 10.0f;
     public float gravity = 5800.0f;
-    public float defaultJumpForce = 6500.0f;
-    public float jumpMultiplier = 6500.0f;
+    public float verticalForce = 6500.0f;
     public float maxJumpForce = 7500.0f;
     public CameraMovement cameraMov;
 
 
-    private float jumpForce;
+    private float jumpForce = 0.0f;
     private float speed;
     private bool canJump = true;
-    private float verticalForce;
     private Vector3 motion;
     private float startingYPosition;
     private CharacterController controller;
-    private GameManager gameManager;
     private float lastZPosition;
-
-
-    public delegate void OnDeath();
-    public OnDeath onDeath;
+    private JetPack jetPack;
 
     public float DistanceTraveled { get; set; }
     public bool PlayerMoving { get; private set; }
@@ -35,12 +29,10 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        gameManager = GameManager.instance;
+        jetPack = GetComponent<JetPack>();
 
-        jumpForce = defaultJumpForce;
         startingYPosition = transform.position.y;
         StartingPosition = transform.position;
-        verticalForce = 0.0f;
         speed = defaultSpeed;
         DistanceTraveled = 0.0f;
         PlayerMoving = false;
@@ -62,38 +54,24 @@ public class PlayerMovement : MonoBehaviour
 
         motion = Vector3.forward * speed;
 
+        // Started Jump change
+
+        jumpForce += Time.deltaTime * verticalForce * Input.GetAxisRaw("Jump") * (jetPack.CurrentFuel / jetPack.MaxFuel);
+        jumpForce = Mathf.Clamp(jumpForce, 0, maxJumpForce);
+
+        print(jumpForce);
+
         if (Input.GetButton("Jump"))
         {
-            jumpForce += Time.deltaTime * jumpMultiplier;
-            jumpForce = Mathf.Clamp(jumpForce, defaultJumpForce, maxJumpForce);
-
-            if (canJump)
-            {
-                verticalForce = jumpForce;
-            }
+            jetPack.DecreaseFuel();
         }
 
-        if (Input.GetButtonUp("Jump") || jumpForce >= maxJumpForce)
+        if(jumpForce > 0)
         {
-            canJump = false;
-            jumpForce = defaultJumpForce;
+            jumpForce -= gravity * Time.deltaTime;
         }
 
-        if (controller.isGrounded)
-        {
-            canJump = true;
-        }
-
-        if(verticalForce > 0)
-        {
-            verticalForce -= gravity * Time.deltaTime;
-        }
-        if(verticalForce < 0)
-        {
-            verticalForce = 0;
-        }
-
-        motion.y -= (gravity * Time.deltaTime) - (verticalForce * Time.deltaTime);
+        motion.y -= (gravity * Time.deltaTime) - (jumpForce * Time.deltaTime);
 
         controller.Move(motion * Time.deltaTime);
     }
@@ -117,32 +95,4 @@ public class PlayerMovement : MonoBehaviour
         DistanceTraveled = 0.0f;
 
     }
-
-    //private void OnControllerColliderHit(ControllerColliderHit hit)
-    //{
-    //    if (hit.gameObject.GetComponent<Fuel>())
-    //    {
-    //        print("We got Fuel");
-    //        return;
-    //    }
-
-    //    if (hit.point.z >= transform.position.z + controller.radius)
-    //    {
-    //        if (onDeath != null)
-    //        {
-    //            onDeath.Invoke();
-    //        }
-    //        print(hit.point.z + " " + transform.position.z + " " + controller.radius + " " + transform.position.z + controller.radius);
-
-    //    }
-    //}
-
-    public void Die()
-    {
-        if (onDeath != null)
-        {
-            onDeath.Invoke();
-        }
-    }
-
 }

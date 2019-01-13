@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     //private AudioSource audioSource;
     //private bool musicPlaying = false;
+    public delegate void OnReset();
+    public OnReset onReset;
 
     public bool GameStarted { get; private set; }
 
@@ -35,7 +37,6 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindObjectOfType<PlayerMovement>();
         spawnPointBuildings = GameObject.FindObjectOfType<BuildingOffset>();
         cameraMovement = Camera.main.gameObject.GetComponent<CameraMovement>();
-        player.onDeath += LoseGame;
 
         GameStarted = false;
         uIManager.ShowMainMenu();
@@ -88,10 +89,10 @@ public class GameManager : MonoBehaviour
     {
         uIManager.ShowLoseCanvas();
         GameStarted = false;
-        StartCoroutine(ResetStage());
+        StartCoroutine(ResetStage(true));
     }
 
-    public void BackToMenu()
+    public void BackToMenu(bool needToWait)
     {
         if (cameraMovement.Transitioning) { return; }
 
@@ -100,12 +101,17 @@ public class GameManager : MonoBehaviour
         uIManager.ShowMainMenu();
         Time.timeScale = 1.0f;
         GameStarted = false;
-        StartCoroutine(ResetStage());
+        StartCoroutine(ResetStage(needToWait));
     }
 
-    IEnumerator ResetStage()
+    IEnumerator ResetStage(bool needToWait)
     {
-        yield return new WaitForSeconds(cameraMovement.transitionSpeed);
+        if (needToWait)
+        {
+            yield return new WaitForSeconds(cameraMovement.transitionSpeed);
+        }
+
+        onReset.Invoke();
         player.ResetPlayer();
         spawnPointBuildings.ChangePosition(player.transform.position);
     }

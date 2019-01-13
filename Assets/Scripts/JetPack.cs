@@ -5,22 +5,31 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovement))]
 public class JetPack : MonoBehaviour
 {
-    [SerializeField]
-    private float initialFuelAmount = 100;
-    private PlayerMovement playerMovement;
+    [Range(0.1f, 5.0f)]
+    public float fuelDecreaseSpeed = 1.0f;
 
-    public float Fuel { get; set; }
+    private GameManager gameManager;
+
+    public float CurrentFuel { get; set; }
+    public float MaxFuel { get; private set; }
 
     void Start()
     {
-        playerMovement = GetComponent<PlayerMovement>();
-        playerMovement.onDeath += ResetFuel;
+        gameManager = GameManager.instance;
+        gameManager.onReset += ResetFuel;
 
+        MaxFuel = 100.0f;
         ResetFuel();
     }
 
-    void ResetFuel()
+    public void ResetFuel()
     {
-        Fuel = initialFuelAmount;
+        CurrentFuel = MaxFuel;
+    }
+
+    public void DecreaseFuel()
+    {
+        CurrentFuel -= Time.deltaTime * MaxFuel * (1 / fuelDecreaseSpeed);
+        if(CurrentFuel <= 0.0f) { CurrentFuel = 0.0f; }
     }
 }

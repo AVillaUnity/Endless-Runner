@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317556045237096266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.77, z: 0.05}
+  m_LocalPosition: {x: 0, y: -1.16, z: 0.13}
   m_LocalScale: {x: 1, y: 2.0760512, z: 1}
   m_Children: []
   m_Father: {fileID: 1709738442909601787}
@@ -55,7 +55,7 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1709738442909601788
@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 1709738442909601787}
   - component: {fileID: 1709738442909601790}
   - component: {fileID: 1709738442909601791}
+  - component: {fileID: 1228664608}
   m_Layer: 0
   m_Name: JetPack Dude
   m_TagString: Player
@@ -85,7 +86,7 @@ Transform:
   m_GameObject: {fileID: 1709738442909601788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.68586, y: 0.68586, z: 0.68586}
+  m_LocalScale: {x: 0.42641288, y: 0.42641288, z: 0.42641288}
   m_Children:
   - {fileID: 6192062153063450855}
   - {fileID: 9071611995750372409}
@@ -124,11 +125,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSpeed: 10
-  gravity: 5800
-  defaultJumpForce: 6500
-  jumpMultiplier: 6500
-  maxJumpForce: 7500
+  gravity: 1000
+  verticalForce: 300000
+  maxJumpForce: 1250
   cameraMov: {fileID: 0}
+--- !u!114 &1228664608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709738442909601788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b38bd34c2b6427469dc96ab904d004d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuelDecreaseSpeed: 1
 --- !u!1 &8112548549029253204
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +195,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -287,6 +300,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2737547729950732384, guid: 4823afa4e126cc54d80f16cbf27dc10b,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4823afa4e126cc54d80f16cbf27dc10b, type: 3}
