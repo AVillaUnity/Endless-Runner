@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour {
 
     #endregion
 
-    //public GameObject SplashScreen;
+    public Canvas SplashScreen;
     public Canvas WorldCanvas;
     public Canvas MainMenuCanvas;
     public Canvas GameCanvas;
@@ -28,22 +28,25 @@ public class UIManager : MonoBehaviour {
         GameCanvas.gameObject.SetActive(true);
         LoseCanvas.gameObject.SetActive(true);
         PauseCanvas.gameObject.SetActive(true);
+        //SplashScreen.gameObject.SetActive(true);
     }
 
-    //public void ShowSplashScreen()
-    //{
-    //    SplashScreen.SetActive(true);
-    //    LoseCanvas.SetActive(false);
-    //    GameCanvas.SetActive(false);
-    //    PauseCanvas.SetActive(false);
-    //    MainMenuCanvas.SetActive(false);
+    public void ShowSplashScreen()
+    {
+        SplashScreen.gameObject.SetActive(true);
+        SplashScreen.enabled = true;
+        LoseCanvas.enabled = false;
+        GameCanvas.enabled = false;
+        PauseCanvas.enabled = false;
+        WorldCanvas.enabled = false;
+        MainMenuCanvas.enabled = true;
 
-    //    Invoke("ShowMainMenu", SplashScreen.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
-    //}
+        Invoke("ShowMainMenu", SplashScreen.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+    }
 
     public void ShowMainMenu()
     {
-        //SplashScreen.SetActive(false);
+        SplashScreen.enabled = false;
         LoseCanvas.enabled = false;
         GameCanvas.enabled = false;
         PauseCanvas.enabled = false;
@@ -53,7 +56,7 @@ public class UIManager : MonoBehaviour {
 
     public void ShowGameCanvas()
     {
-        //SplashScreen.SetActive(false);
+        SplashScreen.enabled = false;
         LoseCanvas.enabled = false;
         GameCanvas.enabled = true;
         PauseCanvas.enabled = false;
@@ -63,7 +66,7 @@ public class UIManager : MonoBehaviour {
 
     public void ShowLoseCanvas()
     {
-        //SplashScreen.SetActive(false);
+        SplashScreen.enabled = false;
         LoseCanvas.enabled = true;
         GameCanvas.enabled = false;
         PauseCanvas.enabled = false;
@@ -73,7 +76,7 @@ public class UIManager : MonoBehaviour {
 
     public void ShowPauseCanvas()
     {
-        //SplashScreen.SetActive(false);
+        SplashScreen.enabled = false;
         LoseCanvas.enabled = false;
         GameCanvas.enabled = false;
         PauseCanvas.enabled = true;
