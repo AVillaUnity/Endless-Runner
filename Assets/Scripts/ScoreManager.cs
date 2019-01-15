@@ -43,12 +43,13 @@ public class ScoreManager : MonoBehaviour
         if(!player.PlayerMoving){ return; }
 
         score += player.DistanceTraveled;
+
         scoreText.text = FormatFloat(score).ToString();
 
-        if(score >= nextLevelAt && difficulty < maxDifficulty)
-        {
-            AdjustDifficulty();
-        }
+        //if(score >= nextLevelAt && difficulty < maxDifficulty)
+        //{
+        //    AdjustDifficulty();
+        //}
 
         if (!displayPlaced && highscorePositionOffset != 0)
         {

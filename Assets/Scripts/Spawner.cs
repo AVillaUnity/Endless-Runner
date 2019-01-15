@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public float buildingLength = 7.5f;
+    public float maxBuildingLength = 7.5f;
     public float gapSpace = 3.0f;
     public int maxBuildingsSpawned = 16;
     public GameObject[] objectToSpawn;
@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
 
     public virtual void Update()
     {
-        if(player.transform.position.z > spawnLocation - (maxBuildingsSpawned * buildingLength))
+        if(player.transform.position.z - 10.0f > spawnLocation - (maxBuildingsSpawned * maxBuildingLength))
         {
             SpawnBuilding();
             DeleteBuilding();
@@ -42,7 +42,7 @@ public class Spawner : MonoBehaviour
 
         GameObject building = Instantiate(objectToSpawn[index], transform.forward * spawnLocation, Quaternion.identity, transform);
 
-        spawnLocation += buildingLength + gapSpace;
+        spawnLocation += building.GetComponent<Building>().buildingLength + gapSpace;
         lastBuildingSpawned = index;
         spawnedBuildings.Add(building);
     }

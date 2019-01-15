@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     private float jumpForce = 0.0f;
+    private float forwardForce = 0.0f;
     private float gravity;
     private float speed;
     private Vector3 motion;
@@ -51,32 +52,28 @@ public class PlayerMovement : MonoBehaviour
         }
         PlayerMoving = true;
 
-        DistanceTraveled = transform.position.z - lastZPosition;
-        lastZPosition = transform.position.z;
+        CalculateDistance();
+        CalculateVerticalForce();
+        CalculateForwardForce();
 
-        motion = Vector3.forward * speed;
-
-        // Started Jump change
-
-        float hasFuel = (jetPack.CurrentFuel > 0) ? 1.0f : 0.0f;
-        jumpForce += hasFuel * ((Time.deltaTime * Input.GetAxis("Jump")) + (initialJumpForce * Input.GetAxisRaw("Jump")));
-        jumpForce = Mathf.Clamp(jumpForce, 0, maxVerticalForce);
-
-        if (Input.GetButton("Jump") && jetPack.CurrentFuel > 0)
+        if(Input.GetAxis("Horizontal") > 0.0f && Input.GetButton("Jump"))
         {
-            gravity -= Time.deltaTime * initialGravity;
-            jetPack.DecreaseFuel();
+            speed += Time.deltaTime * 20;
         }
         else
         {
-            gravity = initialGravity;
+            speed -= Time.deltaTime * 15;
         }
 
-        jumpForce = (jumpForce > 0) ? jumpForce - (gravity * Time.deltaTime * 2) : 0.0f;
+        speed = Mathf.Clamp(speed, defaultSpeed, defaultSpeed + 5);
 
+        //Debug.Log(string.Format("Forward Force: {0} | Jump Force: {1} | Speed: {2}", forwardForce, jumpForce, speed));
+
+
+        motion = transform.forward * forwardForce * speed;
         motion.y -= (gravity * Time.deltaTime) - (jumpForce * Time.deltaTime);
 
-        
+
 
         controller.Move(motion * Time.deltaTime);
 
@@ -84,6 +81,49 @@ public class PlayerMovement : MonoBehaviour
         newPosition.y = Mathf.Clamp(newPosition.y, 0, maxHeight);
         transform.position = newPosition;
 
+    }
+
+    private void CalculateVerticalForce()
+    {
+        float hasFuel = (jetPack.CurrentFuel > 0) ? 1.0f : 0.0f;
+        jumpForce += hasFuel * ((Time.deltaTime * Input.GetAxis("Jump")) + (initialJumpForce * Input.GetAxisRaw("Jump")));
+
+        if (Input.GetButton("Jump") && jetPack.CurrentFuel > 0)
+        {
+            gravity -= Time.deltaTime * initialGravity;
+
+            //jetPack.DecreaseFuel();
+        }
+        else
+        {
+            gravity = initialGravity;
+        }
+
+        jumpForce = (jumpForce > 0) ? jumpForce - (gravity * Time.deltaTime) : 0.0f;
+        jumpForce = Mathf.Clamp(jumpForce, 0, maxVerticalForce);
+    }
+
+    private void CalculateForwardForce()
+    {
+        float forwardGravity = 3;
+        float forwardVelocity = Mathf.Clamp(Input.GetAxisRaw("Horizontal"), 0, 1.0f);
+        
+        forwardForce += Time.deltaTime * forwardGravity * forwardVelocity;
+        forwardForce -= Time.deltaTime * forwardGravity / 3;
+        forwardForce = Mathf.Clamp(forwardForce, 0.0f, 1.0f);
+    }
+
+    private void CalculateDistance()
+    {
+        if (transform.position.z > lastZPosition)
+        {
+            DistanceTraveled = transform.position.z - lastZPosition;
+            lastZPosition = transform.position.z;
+        }
+        else
+        {
+            DistanceTraveled = 0;
+        }
     }
 
     public void IncrementSpeed()
@@ -102,6 +142,5 @@ public class PlayerMovement : MonoBehaviour
         StartingPosition = transform.position;
 
         DistanceTraveled = 0.0f;
-
     }
 }

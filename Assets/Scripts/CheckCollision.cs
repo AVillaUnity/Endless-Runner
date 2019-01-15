@@ -23,7 +23,7 @@ public class CheckCollision : MonoBehaviour
         if (other.gameObject.tag == "Building")
         {
             //print("we dead");
-            gameManager.LoseGame();
+            //gameManager.LoseGame();
         }
     }
 }

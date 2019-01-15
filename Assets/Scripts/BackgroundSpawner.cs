@@ -33,12 +33,12 @@ public class BackgroundSpawner : Spawner
         buildings.SetActive(true);
 
         spawnedBuildings.Add(buildings);
-        spawnLocation += buildingLength + gapSpace;
+        spawnLocation += maxBuildingLength + gapSpace;
     }
 
     public override void Update()
     {
-        if (player.transform.position.z - playerOffset> spawnLocation - (maxBuildingsSpawned * buildingLength))
+        if (player.transform.position.z - playerOffset> spawnLocation - (maxBuildingsSpawned * maxBuildingLength))
         {
             SpawnBuilding();
             DeleteBuilding();
