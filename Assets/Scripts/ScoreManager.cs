@@ -6,6 +6,7 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI loseScoreText;
     public TextMeshProUGUI menuHighscoreText;
     public TextMeshProUGUI loseMenuHighscoreText;
     public TextMeshPro worldHighscoreText;
@@ -29,6 +30,7 @@ public class ScoreManager : MonoBehaviour
         highScore = PlayerPrefsManager.GetHighscore();
         UdpateHighScoreText();
         scoreText.text = FormatFloat(score).ToString();
+        loseScoreText.text = scoreText.text;
 
         player = GameObject.FindObjectOfType<PlayerMovement>();
 
@@ -45,6 +47,7 @@ public class ScoreManager : MonoBehaviour
         score += player.DistanceTraveled;
 
         scoreText.text = FormatFloat(score).ToString();
+        loseScoreText.text = scoreText.text;
 
         //if(score >= nextLevelAt && difficulty < maxDifficulty)
         //{

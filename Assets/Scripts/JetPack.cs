@@ -16,6 +16,7 @@ public class JetPack : MonoBehaviour
     private Color startingColor;
     private bool goingToMax = false;
     private CharacterController controller;
+    private IEnumerator increaseToMax;
 
     public float CurrentFuel { get; set; }
     public float MaxFuel { get; private set; }
@@ -27,6 +28,7 @@ public class JetPack : MonoBehaviour
 
         gameManager.onReset += ResetFuel;
 
+        increaseToMax = IncreaseToMax();
         startingColor = fillImageOfSlider.color;
         MaxFuel = 200.0f;
         ResetFuel();
@@ -34,10 +36,11 @@ public class JetPack : MonoBehaviour
 
     public void ResetFuel()
     {
-        StopCoroutine(IncreaseToMax());
+        StopCoroutine(increaseToMax);
         CurrentFuel = MaxFuel / 2;
         fuelSlider.value = CurrentFuel / MaxFuel;
         fillImageOfSlider.color = startingColor;
+        goingToMax = false;
     }
 
     public void DecreaseFuel()
@@ -71,7 +74,7 @@ public class JetPack : MonoBehaviour
         if(goingToMax) { return; }
 
         goingToMax = true;
-        StartCoroutine(IncreaseToMax());
+        StartCoroutine(increaseToMax);
     }
 
     private IEnumerator IncreaseToMax()
@@ -89,5 +92,6 @@ public class JetPack : MonoBehaviour
             yield return null;
         }
         goingToMax = false;
+        increaseToMax = IncreaseToMax();
     }
 }
