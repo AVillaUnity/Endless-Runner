@@ -2718,7 +2718,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 2940731647
-  m_fontColor: {r: 1, g: 0, b: 0.28235295, a: 0.6862745}
+  m_fontColor: {r: 1, g: 0.30309144, b: 0, a: 0.6862745}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2785,7 +2785,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -5462,10 +5462,55 @@ PrefabInstance:
       propertyPath: superFuelColor.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1847733286159608771, guid: 99d9f7395466675428f42cb7bf6ad286,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 61998497071384094, guid: 99d9f7395466675428f42cb7bf6ad286,
         type: 3}
       propertyPath: minEmmision
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206414159535368330, guid: 99d9f7395466675428f42cb7bf6ad286,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3395061643891884734, guid: 99d9f7395466675428f42cb7bf6ad286,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806718755692468900, guid: 99d9f7395466675428f42cb7bf6ad286,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2657155209426584764, guid: 99d9f7395466675428f42cb7bf6ad286,
+        type: 3}
+      propertyPath: m_SpotAngle
+      value: 115.5038
+      objectReference: {fileID: 0}
+    - target: {fileID: 2657155209426584764, guid: 99d9f7395466675428f42cb7bf6ad286,
+        type: 3}
+      propertyPath: m_Range
+      value: 0.91163075
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720724677034569710, guid: 99d9f7395466675428f42cb7bf6ad286,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1427248679754397684, guid: 99d9f7395466675428f42cb7bf6ad286,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852058318925455874, guid: 99d9f7395466675428f42cb7bf6ad286,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99d9f7395466675428f42cb7bf6ad286, type: 3}

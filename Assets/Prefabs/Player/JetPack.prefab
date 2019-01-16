@@ -166,11 +166,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: JetPack Stream 2
       objectReference: {fileID: 0}
-    - target: {fileID: 653215456523557900, guid: c5130e6346aa2664a9d104fc8f87bf21,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 3286155897628432940, guid: c5130e6346aa2664a9d104fc8f87bf21,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -225,11 +220,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5103066367262940920, guid: c5130e6346aa2664a9d104fc8f87bf21,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5130e6346aa2664a9d104fc8f87bf21, type: 3}
