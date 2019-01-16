@@ -13,17 +13,24 @@ public class CheckCollision : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Fuel>())
+        GameObject hit = other.gameObject;
+        if (hit.GetComponent<Fuel>())
         {
-            jetPack.ResetFuel();
-            Destroy(other.gameObject);
-            //print("We got Fuel");
+            Fuel fuel = hit.GetComponent<Fuel>();
+            if(hit.tag == "Super")
+            {
+                jetPack.ActivateSuperFuel();
+            }
+            else
+            {
+                jetPack.IncrementFuel(fuel.refillAmount);
+            }
+            Destroy(hit);
         }
 
-        if (other.gameObject.tag == "Building")
+        if (hit.tag == "Death")
         {
-            //print("we dead");
-            //gameManager.LoseGame();
+            gameManager.LoseGame();
         }
     }
 }

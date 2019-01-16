@@ -9,11 +9,16 @@ public class PlayerMovement : MonoBehaviour
     public float maxVerticalForce = 2000.0f;
     public float initialJumpForce = 2000.0f;
     public float maxHeight = 17.0f;
+    public float minRotationSpeed = 10.0f;
+    private float minRotationAngle = 0.0f;
+    public float maxRotationDegree = 60.0f;
     public CameraMovement cameraMov;
 
 
     private float jumpForce = 0.0f;
     private float forwardForce = 0.0f;
+    private float rotationAngle;
+    private float rotationSpeed;
     private float gravity;
     private float speed;
     private Vector3 motion;
@@ -21,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     private float lastZPosition;
     private JetPack jetPack;
+    private GameManager gameManager;
 
     public float DistanceTraveled { get; set; }
     public bool PlayerMoving { get; private set; }
@@ -30,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameManager.instance;
         controller = GetComponent<CharacterController>();
         jetPack = GetComponent<JetPack>();
 
@@ -40,6 +47,9 @@ public class PlayerMovement : MonoBehaviour
         PlayerMoving = false;
         lastZPosition = transform.position.z;
         gravity = initialGravity;
+
+        rotationSpeed = minRotationSpeed;
+        rotationAngle = minRotationAngle;
     }
 
     // Update is called once per frame
@@ -56,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         CalculateVerticalForce();
         CalculateForwardForce();
 
-        if(Input.GetAxis("Horizontal") > 0.0f && Input.GetButton("Jump"))
+        if (Input.GetAxis("Horizontal") > 0.0f && Input.GetButton("Jump"))
         {
             speed += Time.deltaTime * 20;
         }
@@ -66,9 +76,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         speed = Mathf.Clamp(speed, defaultSpeed, defaultSpeed + 5);
-
-        //Debug.Log(string.Format("Forward Force: {0} | Jump Force: {1} | Speed: {2}", forwardForce, jumpForce, speed));
-
 
         motion = transform.forward * forwardForce * speed;
         motion.y -= (gravity * Time.deltaTime) - (jumpForce * Time.deltaTime);
@@ -80,7 +87,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 newPosition = transform.position;
         newPosition.y = Mathf.Clamp(newPosition.y, 0, maxHeight);
         transform.position = newPosition;
-
     }
 
     private void CalculateVerticalForce()
@@ -92,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
         {
             gravity -= Time.deltaTime * initialGravity;
 
-            //jetPack.DecreaseFuel();
+            jetPack.DecreaseFuel();
         }
         else
         {
@@ -137,6 +143,9 @@ public class PlayerMovement : MonoBehaviour
         Vector3 newPosition = transform.position;
         newPosition.y = startingYPosition;
         transform.position = newPosition;
+
+        jumpForce = 0.0f;
+        forwardForce = 0.0f;
 
         // Used to calculate where the highscore object will be placed
         StartingPosition = transform.position;

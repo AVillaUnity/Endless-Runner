@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1919633864209010968}
   - component: {fileID: 1919633864209010969}
   m_Layer: 0
-  m_Name: Fuel
+  m_Name: Half Fuel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,3 +122,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotatingSpeed: 20
+  refillAmount: 50

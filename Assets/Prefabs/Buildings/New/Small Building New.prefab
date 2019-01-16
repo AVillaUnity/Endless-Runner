@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 165967733097000040}
   - component: {fileID: 165967733098098344}
   m_Layer: 0
-  m_Name: Small Building
+  m_Name: Small Building New
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &165967733095672904
 Transform:

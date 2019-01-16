@@ -8,6 +8,8 @@ TagManager:
   - Short Building
   - Medium Building
   - Tall Building
+  - Super
+  - Death
   layers:
   - Default
   - TransparentFX

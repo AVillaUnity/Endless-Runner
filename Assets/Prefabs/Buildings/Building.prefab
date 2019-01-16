@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3615564422270708941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5915302828719584683}
+  - component: {fileID: 3301383652891554968}
+  m_Layer: 0
+  m_Name: Lose Collider
+  m_TagString: Death
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5915302828719584683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3615564422270708941}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1196803415014263491}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3301383652891554968
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3615564422270708941}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.290779, y: 9.651166, z: 0.40169197}
+  m_Center: {x: -0.0552845, y: 4.8381677, z: 0.299154}
 --- !u!1 &5792245351857874716
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +58,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &3649289475555453714
 Transform:
@@ -44,7 +88,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &5075426350343792912
 Transform:
@@ -89,6 +133,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 5915302828719584683}
   - {fileID: 8275647444937975900}
   - {fileID: 5162900284143597388}
   m_Father: {fileID: 0}
@@ -106,8 +151,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd9c46c4005f8b47ab1fe72805ee144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  percentToDropFuel: 65
-  fuel: {fileID: 1919633864209010970, guid: 264b09030d82d0840af0a2687aeea6b3, type: 3}
+  percentToDropFuel: 70
+  percentToDropSuperFuel: 10
+  fullFuel: {fileID: 1919633864209010970, guid: 619ab7d10fc2a5848b12fb61d55b5cb2,
+    type: 3}
+  halfFuel: {fileID: 1919633864209010970, guid: 264b09030d82d0840af0a2687aeea6b3,
+    type: 3}
+  superFuel: {fileID: 1919633864209010970, guid: 858f1b91e247aa049b963eb8bca69833,
+    type: 3}
   spawnPoints:
   - {fileID: 9089684846500210133}
   - {fileID: 5075426350343792912}
@@ -139,7 +190,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &5162900284143597388
 Transform:
@@ -156,7 +207,7 @@ Transform:
   - {fileID: 5075426350343792912}
   - {fileID: 3649289475555453714}
   m_Father: {fileID: 1196803415014263491}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1083375169560695799
 Rigidbody:
@@ -202,7 +253,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &9089684846500210133
 Transform:
@@ -234,6 +285,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Building
+      objectReference: {fileID: 0}
+    - target: {fileID: 165967733096165480, guid: be95d1badd1f2c74392b50effb25fa23,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 165967733095672904, guid: be95d1badd1f2c74392b50effb25fa23,
         type: 3}
@@ -273,7 +329,7 @@ PrefabInstance:
     - target: {fileID: 165967733095672904, guid: be95d1badd1f2c74392b50effb25fa23,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 165967733095672904, guid: be95d1badd1f2c74392b50effb25fa23,
         type: 3}
