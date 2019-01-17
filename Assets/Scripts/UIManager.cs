@@ -20,6 +20,9 @@ public class UIManager : MonoBehaviour {
     public Canvas GameCanvas;
     public Canvas LoseCanvas;
     public Canvas PauseCanvas;
+    public Animator menuAnimator;
+
+    private IEnumerator fadeOut;
 
     private void Start()
     {
@@ -29,6 +32,8 @@ public class UIManager : MonoBehaviour {
         LoseCanvas.gameObject.SetActive(true);
         PauseCanvas.gameObject.SetActive(true);
         //SplashScreen.gameObject.SetActive(true);
+
+        fadeOut = FadeOut();
     }
 
     public void ShowSplashScreen()
@@ -46,6 +51,8 @@ public class UIManager : MonoBehaviour {
 
     public void ShowMainMenu()
     {
+        StopAllCoroutines();
+
         SplashScreen.enabled = false;
         LoseCanvas.enabled = false;
         GameCanvas.enabled = false;
@@ -56,16 +63,18 @@ public class UIManager : MonoBehaviour {
 
     public void ShowGameCanvas()
     {
+        StartCoroutine(fadeOut);
+
         SplashScreen.enabled = false;
-        LoseCanvas.enabled = false;
         GameCanvas.enabled = true;
         PauseCanvas.enabled = false;
         WorldCanvas.enabled = true;
-        MainMenuCanvas.enabled = false;
     }
 
     public void ShowLoseCanvas()
     {
+        StopAllCoroutines();
+
         SplashScreen.enabled = false;
         LoseCanvas.enabled = true;
         GameCanvas.enabled = false;
@@ -83,4 +92,14 @@ public class UIManager : MonoBehaviour {
         WorldCanvas.enabled = true;
         MainMenuCanvas.enabled = false;
     }
+
+    private IEnumerator FadeOut()
+    {
+        menuAnimator.SetTrigger("Fade Out");
+        yield return new WaitForSeconds(1.0f);
+        LoseCanvas.enabled = false;
+        MainMenuCanvas.enabled = false;
+        fadeOut = FadeOut();
+    }
+  
 }
