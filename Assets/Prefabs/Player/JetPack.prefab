@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3530589892504424801}
   - component: {fileID: 2525411261151013179}
   - component: {fileID: 2737547729950732384}
+  - component: {fileID: 2682096353095783254}
   m_Layer: 9
   m_Name: JetPack
   m_TagString: Untagged
@@ -79,6 +80,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2682096353095783254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5140951069000827760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ee97af6ac2d09f4aa097a5d1a4c9412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puff: {fileID: 3094637455222520194, guid: dadde776168028d4dac34665b600294a, type: 3}
 --- !u!1001 &6750653517935211159
 PrefabInstance:
   m_ObjectHideFlags: 0

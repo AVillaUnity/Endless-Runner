@@ -20,6 +20,7 @@ public class ScoreManager : MonoBehaviour
     private int nextLevelAt = 100;
     private PlayerMovement player;
     private GameManager gameManager;
+    private SpawnFireworks fireworksSpawner;
     private float highscorePositionOffset;
 
     private void Start()
@@ -33,6 +34,7 @@ public class ScoreManager : MonoBehaviour
         loseScoreText.text = scoreText.text;
 
         player = GameObject.FindObjectOfType<PlayerMovement>();
+        fireworksSpawner = highscoreDisplay.GetComponent<SpawnFireworks>();
 
         GetInitialOffset();
         //ResetHighScore();
@@ -57,6 +59,11 @@ public class ScoreManager : MonoBehaviour
         if (!displayPlaced && highscorePositionOffset != 0)
         {
             PlaceDisplayObject();
+        }
+
+        if(score > highScore && !fireworksSpawner.SpawnedFireworks && displayPlaced)
+        {
+            fireworksSpawner.Spawn();
         }
 
 
