@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private float lastZPosition;
     private JetPack jetPack;
     private GameManager gameManager;
+    private Player player;
 
     public float DistanceTraveled { get; set; }
     public bool PlayerMoving { get; private set; }
@@ -36,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GetComponent<Player>();
         gameManager = GameManager.instance;
         controller = GetComponent<CharacterController>();
         jetPack = GetComponent<JetPack>();
@@ -61,6 +63,8 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         PlayerMoving = true;
+
+        if (player.IsDead) { return; }
 
         CalculateDistance();
         CalculateVerticalForce();
@@ -151,5 +155,6 @@ public class PlayerMovement : MonoBehaviour
         StartingPosition = transform.position;
 
         DistanceTraveled = 0.0f;
+        player.IsDead = false;
     }
 }

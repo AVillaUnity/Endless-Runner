@@ -18,7 +18,8 @@ public class ScoreManager : MonoBehaviour
     private int difficulty = 1;
     private int maxDifficulty = 10;
     private int nextLevelAt = 100;
-    private PlayerMovement player;
+    private PlayerMovement playerMovement;
+    private Player player;
     private GameManager gameManager;
     private SpawnFireworks fireworksSpawner;
     private float highscorePositionOffset;
@@ -33,7 +34,8 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = FormatFloat(score).ToString();
         loseScoreText.text = scoreText.text;
 
-        player = GameObject.FindObjectOfType<PlayerMovement>();
+        playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
+        player = GameObject.FindObjectOfType<Player>();
         fireworksSpawner = highscoreDisplay.GetComponent<SpawnFireworks>();
 
         GetInitialOffset();
@@ -44,9 +46,10 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!player.PlayerMoving){ return; }
+        if(!playerMovement.PlayerMoving){ return; }
+        if (player.IsDead) { return; }
 
-        score += player.DistanceTraveled;
+        score += playerMovement.DistanceTraveled;
 
         scoreText.text = FormatFloat(score).ToString();
         loseScoreText.text = scoreText.text;
@@ -72,7 +75,7 @@ public class ScoreManager : MonoBehaviour
     private void PlaceDisplayObject()
     {
         Vector3 newPosition = highscoreDisplay.transform.position;
-        newPosition.z = player.transform.position.z + highscorePositionOffset;
+        newPosition.z = playerMovement.transform.position.z + highscorePositionOffset;
         highscoreDisplay.transform.position = newPosition;
         highscoreDisplay.SetActive(true);
         displayPlaced = true;
@@ -88,7 +91,7 @@ public class ScoreManager : MonoBehaviour
     {
         difficulty++;
         nextLevelAt *= 2;
-        player.IncrementSpeed();
+        playerMovement.IncrementSpeed();
     }
 
     void ResetTimer()
@@ -123,8 +126,8 @@ public class ScoreManager : MonoBehaviour
 
     void CalculateDisplayOffset()
     {
-        float currentZPosition = player.transform.position.z;
-        highscorePositionOffset = currentZPosition - player.StartingPosition.z;
+        float currentZPosition = playerMovement.transform.position.z;
+        highscorePositionOffset = currentZPosition - playerMovement.StartingPosition.z;
 
         PlayerPrefsManager.SetOffsetZ(highscorePositionOffset);
     }

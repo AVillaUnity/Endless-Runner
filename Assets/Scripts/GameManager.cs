@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
         cameraMovement = Camera.main.gameObject.GetComponent<CameraMovement>();
 
         GameStarted = false;
-        //uIManager.ShowMainMenu();
-        uIManager.ShowSplashScreen();
+        uIManager.ShowMainMenu();
+        //uIManager.ShowSplashScreen();
         //StartGame();
     }
 
@@ -87,9 +87,7 @@ public class GameManager : MonoBehaviour
 
     public void LoseGame()
     {
-        uIManager.ShowLoseCanvas();
-        GameStarted = false;
-        StartCoroutine(ResetStage(true));
+        StartCoroutine(ShowLoseScreen());
     }
 
     public void BackToMenu(bool needToWait)
@@ -114,6 +112,15 @@ public class GameManager : MonoBehaviour
         onReset.Invoke();
         player.ResetPlayer();
         spawnPointBuildings.ChangePosition(player.transform.position);
+    }
+
+    IEnumerator ShowLoseScreen()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        uIManager.ShowLoseCanvas();
+        GameStarted = false;
+        StartCoroutine(ResetStage(true));
     }
 
 

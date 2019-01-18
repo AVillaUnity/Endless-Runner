@@ -7,16 +7,18 @@ public class GeneratePuff : MonoBehaviour
     public GameObject puff;
 
     private CharacterController controller;
+    private JetPack jetPack;
     // Start is called before the first frame update
     void Start()
     {
         controller = GameObject.FindObjectOfType<CharacterController>();
+        jetPack = GameObject.FindObjectOfType<JetPack>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(controller.isGrounded && Input.GetButtonDown("Jump"))
+        if(controller.isGrounded && Input.GetButtonDown("Jump") && jetPack.CurrentFuel > 0)
         {
             Instantiate(puff, transform.position, Quaternion.identity);
         }

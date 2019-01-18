@@ -10,12 +10,14 @@ public class ParticleControl : MonoBehaviour
     public float speedToEmmision = 10.0f;
 
     private ParticleSystem ps;
+    private JetPack jetPack;
     private float emissionAmount = 0.0f;
     
     // Start is called before the first frame update
     void Start()
     {
         ps = GetComponent<ParticleSystem>();
+        jetPack = GameObject.FindObjectOfType<JetPack>();
 
         var emission = ps.emission;
         emission.rateOverTime = minEmmision;
@@ -37,9 +39,7 @@ public class ParticleControl : MonoBehaviour
             emissionAmount -= Time.deltaTime * speedToEmmision;
         }
         emissionAmount = Mathf.Clamp(emissionAmount, minEmmision, maxEmission);
-        emission.rateOverTime = emissionAmount;
 
-
-
+        emission.rateOverTime = (jetPack.CurrentFuel > 0) ? emissionAmount : 0.0f;
     }
 }

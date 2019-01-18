@@ -5,10 +5,12 @@ public class CheckCollision : MonoBehaviour
 {
     private GameManager gameManager;
     private JetPack jetPack;
+    private Player player;
 
     private void Start()
     {
         jetPack = GetComponentInParent<JetPack>();
+        player = GetComponentInParent<Player>();
         gameManager = GameManager.instance;
     }
     private void OnTriggerEnter(Collider other)
@@ -30,6 +32,7 @@ public class CheckCollision : MonoBehaviour
 
         if (hit.tag == "Death")
         {
+            player.Die();
             gameManager.LoseGame();
         }
     }
