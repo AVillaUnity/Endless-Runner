@@ -4812,8 +4812,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxEmission: 10
-  minEmmision: 1
-  speedToEmmision: 50
+  minEmmision: 7
+  speedToEmmision: 60
 --- !u!1 &4697023255442638082
 GameObject:
   m_ObjectHideFlags: 0
@@ -14243,5 +14243,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxEmission: 50
-  minEmmision: 5
-  speedToEmmision: 50
+  minEmmision: 12
+  speedToEmmision: 60

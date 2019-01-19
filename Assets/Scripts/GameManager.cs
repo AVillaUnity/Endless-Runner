@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour
         cameraMovement = Camera.main.gameObject.GetComponent<CameraMovement>();
 
         GameStarted = false;
-        //uIManager.ShowMainMenu();
-        uIManager.ShowSplashScreen();
+        uIManager.ShowMainMenu();
+        //uIManager.ShowSplashScreen();
         //StartGame();
     }
 

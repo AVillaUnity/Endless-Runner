@@ -31,11 +31,11 @@ public class Fuel : MonoBehaviour
 
     private void Rotate()
     {
-        float xRotation = Time.deltaTime * rotatingSpeed;
+        //float xRotation = Time.deltaTime * rotatingSpeed;
         float yRotation = Time.deltaTime * rotatingSpeed;
-        float zRotation = Time.deltaTime * rotatingSpeed;
+        //float zRotation = Time.deltaTime * rotatingSpeed;
 
-        transform.Rotate(xRotation, yRotation, zRotation);
+        transform.Rotate(0, yRotation, 0);
     }
 
 
