@@ -17,13 +17,12 @@ public class GameManager : MonoBehaviour
     #endregion
 
     private UIManager uIManager;
+    private AudioManager audioManager;
     private BuildingOffset spawnPointBuildings;
     private bool isPaused = false;
     private PlayerMovement player;
     private CameraMovement cameraMovement;
 
-    //private AudioSource audioSource;
-    //private bool musicPlaying = false;
     public delegate void OnReset();
     public OnReset onReset;
 
@@ -32,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //audioSource = GetComponent<AudioSource>();
+        audioManager = AudioManager.instance;
         uIManager = UIManager.instance;
         player = GameObject.FindObjectOfType<PlayerMovement>();
         spawnPointBuildings = GameObject.FindObjectOfType<BuildingOffset>();
@@ -57,11 +56,7 @@ public class GameManager : MonoBehaviour
     {
         if (cameraMovement.Transitioning) { return; }
 
-        //if (!musicPlaying)
-        //{
-        //    audioSource.Play();
-        //    musicPlaying = true;
-        //}
+        if (!audioManager.ThemeIsPlaying) { audioManager.Play("Theme"); }
         uIManager.ShowGameCanvas();
         GameStarted = true;
     }

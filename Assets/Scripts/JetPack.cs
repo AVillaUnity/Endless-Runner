@@ -13,6 +13,7 @@ public class JetPack : MonoBehaviour
     public Color superFuelColor;
 
     private GameManager gameManager;
+    private AudioSource audioSource;
     private Color startingColor;
     private bool goingToMax = false;
     private CharacterController controller;
@@ -23,6 +24,7 @@ public class JetPack : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         gameManager = GameManager.instance;
         controller = GetComponent<CharacterController>();
 

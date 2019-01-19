@@ -10,6 +10,8 @@ TagManager:
   - Tall Building
   - Super
   - Death
+  - Fire
+  - Car
   layers:
   - Default
   - TransparentFX

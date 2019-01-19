@@ -21,6 +21,7 @@ public class ScoreManager : MonoBehaviour
     private PlayerMovement playerMovement;
     private Player player;
     private GameManager gameManager;
+    private AudioManager audioManager;
     private SpawnFireworks fireworksSpawner;
     private float highscorePositionOffset;
 
@@ -28,6 +29,8 @@ public class ScoreManager : MonoBehaviour
     {
         gameManager = GameManager.instance;
         gameManager.onReset += ResetTimer;
+
+        audioManager = AudioManager.instance;
 
         highScore = PlayerPrefsManager.GetHighscore();
         UdpateHighScoreText();
@@ -39,7 +42,7 @@ public class ScoreManager : MonoBehaviour
         fireworksSpawner = highscoreDisplay.GetComponent<SpawnFireworks>();
 
         GetInitialOffset();
-        //ResetHighScore();
+        ResetHighScore();
         highscoreDisplay.SetActive(false);
     }
 
@@ -67,6 +70,7 @@ public class ScoreManager : MonoBehaviour
         if(score > highScore && !fireworksSpawner.SpawnedFireworks && displayPlaced)
         {
             fireworksSpawner.Spawn();
+            audioManager.Play("Yay");
         }
 
 

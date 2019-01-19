@@ -10,11 +10,13 @@ public class Player : MonoBehaviour
     private CharacterController controller;
     private GameManager gameManger;
     private float timeElapsed = 0.0f;
+    private AudioManager audioManager;
 
     public bool IsDead { get; set; }
 
     private void Start()
     {
+        audioManager = AudioManager.instance;
         gameManger = GameManager.instance;
         controller = GetComponent<CharacterController>();
         jetPack = GetComponent<JetPack>();
@@ -41,6 +43,10 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
+        audioManager.Stop("Theme");
+        audioManager.ThemeIsPlaying = false;
+        audioManager.Play("Explosion");
+
         IsDead = true;
         StartCoroutine(DeathAnimation());
     }

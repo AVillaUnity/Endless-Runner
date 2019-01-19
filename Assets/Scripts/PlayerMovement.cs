@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 motion;
     private float startingYPosition;
     private CharacterController controller;
+    private Animator animator;
     private float lastZPosition;
     private JetPack jetPack;
     private GameManager gameManager;
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         player = GetComponent<Player>();
         gameManager = GameManager.instance;
         controller = GetComponent<CharacterController>();
@@ -101,16 +103,35 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButton("Jump") && jetPack.CurrentFuel > 0)
         {
             gravity -= Time.deltaTime * initialGravity;
+            animator.SetBool("Jump", true);
 
             jetPack.DecreaseFuel();
         }
         else
         {
             gravity = initialGravity;
+            Fall();
         }
 
         jumpForce = (jumpForce > 0) ? jumpForce - (gravity * Time.deltaTime) : 0.0f;
         jumpForce = Mathf.Clamp(jumpForce, 0, maxVerticalForce);
+    }
+
+    private void Fall()
+    {
+        animator.SetBool("Jump", false);
+
+        Ray ray = new Ray(transform.position, Vector3.down);
+        RaycastHit raycastHit = new RaycastHit();
+
+        if(Physics.Raycast(ray, out raycastHit))
+        {
+            if(raycastHit.distance > 1.75)
+            {
+                print("matching target");
+                animator.MatchTarget(raycastHit.point, Quaternion.identity, AvatarTarget.Root, new MatchTargetWeightMask(new Vector3(0, 1, 0), 0), 0f, .05f);
+            }
+        }
     }
 
     private void CalculateForwardForce()
@@ -121,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
         forwardForce += Time.deltaTime * forwardGravity * forwardVelocity;
         forwardForce -= Time.deltaTime * forwardGravity / 3;
         forwardForce = Mathf.Clamp(forwardForce, 0.0f, 1.0f);
+        animator.SetFloat("Speed", forwardForce);
     }
 
     private void CalculateDistance()
