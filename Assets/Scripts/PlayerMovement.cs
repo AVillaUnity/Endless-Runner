@@ -128,7 +128,6 @@ public class PlayerMovement : MonoBehaviour
         {
             if(raycastHit.distance > 1.75)
             {
-                print("matching target");
                 animator.MatchTarget(raycastHit.point, Quaternion.identity, AvatarTarget.Root, new MatchTargetWeightMask(new Vector3(0, 1, 0), 0), 0f, .05f);
             }
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectPooler : MonoBehaviour
 {
     public int initialNumOfObjects = 10;
-    public GameObject objectToSpawn;
+    public GameObject[] objectToSpawn;
     public Transform objectParent;
 
     private List<GameObject> objectList;
@@ -23,7 +23,16 @@ public class ObjectPooler : MonoBehaviour
 
     private GameObject CreateObject()
     {
-        GameObject newObject = Instantiate(objectToSpawn, objectParent);
+        GameObject newObject;
+        if (objectToSpawn.Length == 1)
+        {
+            newObject = Instantiate(objectToSpawn[0], objectParent);
+        }
+        else
+        {
+            int index = Random.Range(0, objectToSpawn.Length);
+            newObject = Instantiate(objectToSpawn[index], objectParent);
+        }
         newObject.SetActive(false);
         objectList.Add(newObject);
 

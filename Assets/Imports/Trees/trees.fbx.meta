@@ -23,7 +23,47 @@ ModelImporter:
     4300000: Tree3
     4300002: Tree2
     4300004: Tree1
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tree1
+    second: {fileID: 2100000, guid: 9ba2478660dc53a4a92676eda81b31cc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tree2
+    second: {fileID: 2100000, guid: 17a7912e45e2c1845b0dfafc79171506, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tree3
+    second: {fileID: 2100000, guid: 63c6e268a38fb8747995c0130bbd27c2, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Tree1Surface_Color
+    second: {fileID: 2800000, guid: 0c3081660af1ae74f8cc6d5df664a46c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Tree2Surface_Color
+    second: {fileID: 2800000, guid: 4a9afe63be3496c4aa0ad8564c6f788a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Tree3Surface_Color
+    second: {fileID: 2800000, guid: 3027e5c273ad20c46b4d53aa46e77248, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bark-05
+    second: {fileID: 2800000, guid: c5260745ca1975d4eb0db4594fb1f900, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: leaf-18
+    second: {fileID: 2800000, guid: cf133c75a122e4f4b9d8077984b01a9d, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

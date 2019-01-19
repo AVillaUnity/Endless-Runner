@@ -42,7 +42,7 @@ public class ScoreManager : MonoBehaviour
         fireworksSpawner = highscoreDisplay.GetComponent<SpawnFireworks>();
 
         GetInitialOffset();
-        ResetHighScore();
+        //ResetHighScore();
         highscoreDisplay.SetActive(false);
     }
 
