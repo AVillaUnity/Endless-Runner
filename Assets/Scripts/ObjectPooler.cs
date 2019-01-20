@@ -10,10 +10,14 @@ public class ObjectPooler : MonoBehaviour
 
     private List<GameObject> objectList;
 
+    private void Awake()
+    {
+        objectList = new List<GameObject>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        objectList = new List<GameObject>();
 
         for(int i = 0; i < initialNumOfObjects; i++)
         {

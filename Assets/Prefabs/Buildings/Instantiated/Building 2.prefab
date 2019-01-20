@@ -1,5 +1,70 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &763550835153973444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4118418980899894729}
+  - component: {fileID: 7493829856823585447}
+  m_Layer: 0
+  m_Name: Light Probe Group
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4118418980899894729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763550835153973444}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.76660156, y: 8.626491, z: 1.7239118}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2139339084569049047}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!220 &7493829856823585447
+LightProbeGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763550835153973444}
+  m_Enabled: 1
+  m_SourcePositions:
+  - {x: 1.7381682, y: 4.2774715, z: 3.3385215}
+  - {x: 1.7381682, y: 2.830659, z: 3.0451632}
+  - {x: 1.7381682, y: -8.706472, z: 3.3385215}
+  - {x: 1.7381682, y: -8.706472, z: 3.0451632}
+  - {x: -3.5205338, y: 4.2774715, z: 3.3385215}
+  - {x: -3.5205338, y: 2.830659, z: 3.0451632}
+  - {x: -3.5205338, y: -8.706472, z: 3.3385215}
+  - {x: -3.5205338, y: -8.706472, z: 3.0451632}
+  - {x: 1.7381682, y: 4.2774715, z: 8.511602}
+  - {x: 1.7381682, y: -8.706472, z: 8.511602}
+  - {x: -3.5205338, y: 4.2774715, z: 8.511602}
+  - {x: -3.5205338, y: -8.706472, z: 8.511602}
+  - {x: 1.7381682, y: -1, z: 3.3385215}
+  - {x: -3.5205338, y: -1, z: 3.3385215}
+  - {x: 1.7381682, y: -1, z: 8.511602}
+  - {x: -3.5205338, y: -1, z: 8.511602}
+  - {x: 1.7381682, y: 2.830659, z: -1.9153271}
+  - {x: 1.7381682, y: -8.706472, z: -1.9153271}
+  - {x: -3.5205338, y: 2.830659, z: -1.9153271}
+  - {x: -3.5205338, y: -8.706472, z: -1.9153271}
+  - {x: 1.7381682, y: -1, z: 3.0451632}
+  - {x: -3.5205338, y: -1, z: 3.0451632}
+  - {x: 1.7381682, y: -1, z: -1.9153271}
+  - {x: -3.5205338, y: -1, z: -1.9153271}
+  m_Dering: 0
 --- !u!54 &1574866261329808091
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -122,6 +187,7 @@ Transform:
   - {fileID: 2353815694974292362}
   - {fileID: 5826560669768088210}
   - {fileID: 5372193718153169496}
+  - {fileID: 4118418980899894729}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

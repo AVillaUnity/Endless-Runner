@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6207b5d5f74294a82859043d660f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialNumOfObjects: 2
-  objectToSpawn: {fileID: 6110852829078519401, guid: 7ec2edb8dbc85c24fa6a57ec7cda8b45,
-    type: 3}
+  initialNumOfObjects: 3
+  objectToSpawn:
+  - {fileID: 6110852829078519401, guid: 7ec2edb8dbc85c24fa6a57ec7cda8b45, type: 3}
   objectParent: {fileID: 8069746651595304529}
 --- !u!114 &8069746651595304530
 MonoBehaviour:
@@ -60,7 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9264a72a57c3564882317ba71f36140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingLength: 140
+  maxBuildingLength: 135
   gapSpace: 2
-  maxBuildingsSpawned: 2
+  maxBuildingsSpawned: 3
+  objectToSpawn: []
   playerOffset: 130

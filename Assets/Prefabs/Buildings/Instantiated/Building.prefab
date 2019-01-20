@@ -44,6 +44,59 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.290779, y: 9.651166, z: 0.40169197}
   m_Center: {x: -0.0552845, y: 4.8381677, z: 0.299154}
+--- !u!1 &4339414619000112904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4854953011498806289}
+  - component: {fileID: 7695720041502335244}
+  m_Layer: 0
+  m_Name: Light Probe Group
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4854953011498806289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4339414619000112904}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10.12793, y: 7.927019, z: 0.30263662}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1196803415014263491}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!220 &7695720041502335244
+LightProbeGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4339414619000112904}
+  m_Enabled: 1
+  m_SourcePositions:
+  - {x: -7.706872, y: -3.5449886, z: 4.308601}
+  - {x: -7.706872, y: -3.5449886, z: -0.38133574}
+  - {x: -7.706872, y: -8.0824795, z: 4.308601}
+  - {x: -7.706872, y: -8.0824795, z: -0.38133574}
+  - {x: -12.500086, y: -3.5449886, z: 4.308601}
+  - {x: -12.500086, y: -3.5449886, z: -0.38133574}
+  - {x: -12.500086, y: -8.0824795, z: 4.308601}
+  - {x: -12.500086, y: -8.0824795, z: -0.38133574}
+  - {x: -7.706872, y: 2.2924232, z: 4.308601}
+  - {x: -7.706872, y: 2.2924232, z: -0.38133574}
+  - {x: -12.500086, y: 2.2924232, z: 4.308601}
+  - {x: -12.500086, y: 2.2924232, z: -0.38133574}
+  m_Dering: 0
 --- !u!1 &5792245351857874716
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,6 +189,7 @@ Transform:
   - {fileID: 5915302828719584683}
   - {fileID: 8275647444937975900}
   - {fileID: 5162900284143597388}
+  - {fileID: 4854953011498806289}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
