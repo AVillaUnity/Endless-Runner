@@ -80,7 +80,6 @@ GameObject:
   - component: {fileID: 5057172253611340488}
   - component: {fileID: 7642434761369864087}
   - component: {fileID: 2607462659757504281}
-  - component: {fileID: 5414789876077991399}
   m_Layer: 0
   m_Name: Headlight
   m_TagString: Untagged
@@ -148,16 +147,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &5414789876077991399
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9218318299385490561}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
