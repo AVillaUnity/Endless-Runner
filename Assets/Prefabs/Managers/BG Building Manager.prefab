@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialNumOfObjects: 3
   objectToSpawn:
-  - {fileID: 6110852829078519401, guid: 7ec2edb8dbc85c24fa6a57ec7cda8b45, type: 3}
+  - {fileID: 2753620635657562220, guid: 297d0bfc77ebdb642a32b50886eb671e, type: 3}
   objectParent: {fileID: 8069746651595304529}
 --- !u!114 &8069746651595304530
 MonoBehaviour:

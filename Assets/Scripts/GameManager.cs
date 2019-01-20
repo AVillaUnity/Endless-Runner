@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
     #endregion
+    public GameObject spawnBuildings;
 
     private UIManager uIManager;
     private AudioManager audioManager;
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
         audioManager = AudioManager.instance;
         uIManager = UIManager.instance;
         player = GameObject.FindObjectOfType<PlayerMovement>();
-        spawnPointBuildings = GameObject.FindObjectOfType<BuildingOffset>();
+        spawnPointBuildings = spawnBuildings.GetComponent<BuildingOffset>();
         cameraMovement = Camera.main.gameObject.GetComponent<CameraMovement>();
 
         GameStarted = false;

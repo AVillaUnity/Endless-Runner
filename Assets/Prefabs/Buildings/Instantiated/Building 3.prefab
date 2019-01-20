@@ -340,11 +340,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Building
       objectReference: {fileID: 0}
-    - target: {fileID: 7844492621562929605, guid: 9fa5147e70322964abbf92cb6a782985,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7844492621562641893, guid: 9fa5147e70322964abbf92cb6a782985,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -414,6 +409,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.427466
+      objectReference: {fileID: 0}
+    - target: {fileID: 7844492621560741637, guid: 9fa5147e70322964abbf92cb6a782985,
+        type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fa5147e70322964abbf92cb6a782985, type: 3}

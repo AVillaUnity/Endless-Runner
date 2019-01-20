@@ -47,6 +47,6 @@ MonoBehaviour:
   gapSpace: 1.5
   maxBuildingsSpawned: 25
   objectToSpawn:
-  - {fileID: 7707164871016917981, guid: 3ffface17bb88914591d5c3d168e58ae, type: 3}
-  - {fileID: 7484642079279912649, guid: f3822399f033b6f4d856db30bb072a5d, type: 3}
-  - {fileID: 3671558235502230906, guid: 7815a1af95395e64f97c64a5cc8c53ff, type: 3}
+  - {fileID: 1218648187, guid: 0465816d8b8aa8448859d8e852a568ec, type: 3}
+  - {fileID: 1329503660, guid: 24b31b6ed65001240a2499f802ff866f, type: 3}
+  - {fileID: 680759774, guid: a966a350c54ad6b4595ee9527117711e, type: 3}
