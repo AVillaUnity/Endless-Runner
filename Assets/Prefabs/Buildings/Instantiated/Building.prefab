@@ -167,7 +167,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1196803415014263491}
   - component: {fileID: 1189672540232790379}
-  - component: {fileID: 8470853586687806321}
   m_Layer: 0
   m_Name: Building
   m_TagString: Short Building
@@ -217,19 +216,6 @@ MonoBehaviour:
   - {fileID: 9089684846500210133}
   - {fileID: 5075426350343792912}
   - {fileID: 3649289475555453714}
---- !u!114 &8470853586687806321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7707164871016917981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b5d8f34add4deb48982da8f2cb0c516, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingLength: 5.5
 --- !u!1 &8122528798496569278
 GameObject:
   m_ObjectHideFlags: 0

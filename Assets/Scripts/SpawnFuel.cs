@@ -15,13 +15,19 @@ public class SpawnFuel : MonoBehaviour
 
     void Start()
     {
+        PlaceFuel();
+    }
+
+    private void PlaceFuel()
+    {
         float chance = Random.Range(0.0f, 1.0f);
         int spawnPoint = Random.Range(0, spawnPoints.Length);
 
-        if(chance >= 1 - (percentToDropFuel / 100.0f))
+        if (chance >= 1 - (percentToDropFuel / 100.0f))
         {
             float fuelChance = Random.Range(0.0f, 1.0f);
-            if(fuelChance >= 1 - (percentToDropSuperFuel / 100.0f)){
+            if (fuelChance >= 1 - (percentToDropSuperFuel / 100.0f))
+            {
                 Instantiate(superFuel, spawnPoints[spawnPoint].position, Quaternion.identity, spawnPoints[spawnPoint]);
             }
             else
@@ -31,5 +37,4 @@ public class SpawnFuel : MonoBehaviour
             }
         }
     }
-
 }

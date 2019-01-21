@@ -478,6 +478,18 @@ LightProbeGroup:
   - {x: -3.2560344, y: 12.895588, z: -1.2304208}
   - {x: -3.2560344, y: 12.895588, z: -14.531218}
   m_Dering: 0
+--- !u!114 &32045294 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8415913305944959363, guid: 80eabde6158c17148ad71f6e3e388b3c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8415913305427177432}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c0b1ab31e873f14181012f5e8239405, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &41343066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -550,7 +562,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3744485525644835106, guid: f3822399f033b6f4d856db30bb072a5d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f3822399f033b6f4d856db30bb072a5d, type: 3}
 --- !u!1 &84336197
 GameObject:
@@ -5432,11 +5445,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawn Point_LM
       objectReference: {fileID: 0}
-    - target: {fileID: 5546691555994697465, guid: e1ce5f67217af8d4d95246ae4c17debc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5546691555994697466, guid: e1ce5f67217af8d4d95246ae4c17debc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5492,6 +5500,91 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5546691555994697460, guid: e1ce5f67217af8d4d95246ae4c17debc,
+        type: 3}
+      propertyPath: buildingManager
+      value: 
+      objectReference: {fileID: 32045294}
+    - target: {fileID: 5546691555593931446, guid: e1ce5f67217af8d4d95246ae4c17debc,
+        type: 3}
+      propertyPath: targetLightmaps.Array.data[0]
+      value: 
+      objectReference: {fileID: 24611211}
+    - target: {fileID: 5546691555593931446, guid: e1ce5f67217af8d4d95246ae4c17debc,
+        type: 3}
+      propertyPath: targetLightmaps.Array.data[1]
+      value: 
+      objectReference: {fileID: 332903587}
+    - target: {fileID: 5546691555593931446, guid: e1ce5f67217af8d4d95246ae4c17debc,
+        type: 3}
+      propertyPath: targetLightmaps.Array.data[2]
+      value: 
+      objectReference: {fileID: 830997377}
+    - target: {fileID: 5546691555593931446, guid: e1ce5f67217af8d4d95246ae4c17debc,
+        type: 3}
+      propertyPath: targetLightmaps.Array.data[3]
+      value: 
+      objectReference: {fileID: 966065256}
+    - target: {fileID: 5546691555593931446, guid: e1ce5f67217af8d4d95246ae4c17debc,
+        type: 3}
+      propertyPath: targetLightmaps.Array.data[4]
+      value: 
+      objectReference: {fileID: 1598741910}
+    - target: {fileID: 5546691555593931446, guid: e1ce5f67217af8d4d95246ae4c17debc,
+        type: 3}
+      propertyPath: targetLightmaps.Array.data[5]
+      value: 
+      objectReference: {fileID: 3671558235502230907}
+    - target: {fileID: 5546691555593931446, guid: e1ce5f67217af8d4d95246ae4c17debc,
+        type: 3}
+      propertyPath: targetLightmaps.Array.data[6]
+      value: 
+      objectReference: {fileID: 7484642079279912650}
+    - target: {fileID: 5546691555593931446, guid: e1ce5f67217af8d4d95246ae4c17debc,
+        type: 3}
+      propertyPath: targetLightmaps.Array.data[7]
+      value: 
+      objectReference: {fileID: 7707164871016917982}
+    - target: {fileID: 1050007827255028164, guid: e1ce5f67217af8d4d95246ae4c17debc,
+        type: 3}
+      propertyPath: targetLightmaps.Array.data[0]
+      value: 
+      objectReference: {fileID: 24611211}
+    - target: {fileID: 1050007827255028164, guid: e1ce5f67217af8d4d95246ae4c17debc,
+        type: 3}
+      propertyPath: targetLightmaps.Array.data[1]
+      value: 
+      objectReference: {fileID: 332903587}
+    - target: {fileID: 1050007827255028164, guid: e1ce5f67217af8d4d95246ae4c17debc,
+        type: 3}
+      propertyPath: targetLightmaps.Array.data[2]
+      value: 
+      objectReference: {fileID: 830997377}
+    - target: {fileID: 1050007827255028164, guid: e1ce5f67217af8d4d95246ae4c17debc,
+        type: 3}
+      propertyPath: targetLightmaps.Array.data[3]
+      value: 
+      objectReference: {fileID: 966065256}
+    - target: {fileID: 1050007827255028164, guid: e1ce5f67217af8d4d95246ae4c17debc,
+        type: 3}
+      propertyPath: targetLightmaps.Array.data[4]
+      value: 
+      objectReference: {fileID: 1598741910}
+    - target: {fileID: 1050007827255028164, guid: e1ce5f67217af8d4d95246ae4c17debc,
+        type: 3}
+      propertyPath: targetLightmaps.Array.data[5]
+      value: 
+      objectReference: {fileID: 3671558235502230907}
+    - target: {fileID: 1050007827255028164, guid: e1ce5f67217af8d4d95246ae4c17debc,
+        type: 3}
+      propertyPath: targetLightmaps.Array.data[6]
+      value: 
+      objectReference: {fileID: 7484642079279912650}
+    - target: {fileID: 1050007827255028164, guid: e1ce5f67217af8d4d95246ae4c17debc,
+        type: 3}
+      propertyPath: targetLightmaps.Array.data[7]
+      value: 
+      objectReference: {fileID: 7707164871016917982}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1ce5f67217af8d4d95246ae4c17debc, type: 3}
 --- !u!4 &1733911595 stripped
@@ -5879,7 +5972,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4168476786078037148, guid: 7815a1af95395e64f97c64a5cc8c53ff, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7815a1af95395e64f97c64a5cc8c53ff, type: 3}
 --- !u!1 &1974791299
 GameObject:

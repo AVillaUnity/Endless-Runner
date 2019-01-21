@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 680759773}
   - component: {fileID: 4926940616429273944}
-  - component: {fileID: 4012513299293328157}
   - component: {fileID: 6944470295150642528}
+  - component: {fileID: 5491164480760190124}
   m_Layer: 0
-  m_Name: Building 3 (1)
+  m_Name: Building 3_LM
   m_TagString: Tall Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680759774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -211.11}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1534993398947331153}
@@ -61,19 +61,6 @@ MonoBehaviour:
   - {fileID: 8491530351211020296}
   - {fileID: 8068654723287425679}
   - {fileID: 9060301241477113243}
---- !u!114 &4012513299293328157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680759774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b5d8f34add4deb48982da8f2cb0c516, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingLength: 6
 --- !u!114 &6944470295150642528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +78,27 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   lightmapID: 3
+--- !u!114 &5491164480760190124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680759774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5d8f34add4deb48982da8f2cb0c516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingLength: 6
+  building: {fileID: 0}
+  poolerIndex: 0
+  spawnerIndex: 0
 --- !u!1 &312811941265377521
 GameObject:
   m_ObjectHideFlags: 0

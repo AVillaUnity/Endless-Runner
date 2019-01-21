@@ -8,13 +8,14 @@ public class BackgroundSpawner : Spawner
     public float playerOffset = 50.0f;
 
     private ObjectPooler objectPooler;
+    private List<GameObject> backgroundBuildings;
 
     // Start is called before the first frame update
     public override void Start()
     {
         objectPooler = GetComponent<ObjectPooler>();
         player = GameObject.FindGameObjectWithTag("Player");
-        spawnedBuildings = new List<GameObject>();
+        backgroundBuildings = new List<GameObject>();
         for (int i = 0; i < maxBuildingsSpawned; i++)
         {
             SpawnBuilding();
@@ -32,7 +33,7 @@ public class BackgroundSpawner : Spawner
         buildings.transform.rotation = Quaternion.identity;
         buildings.SetActive(true);
 
-        spawnedBuildings.Add(buildings);
+        backgroundBuildings.Add(buildings);
         spawnLocation += maxBuildingLength + gapSpace;
     }
 
@@ -47,7 +48,7 @@ public class BackgroundSpawner : Spawner
 
     public override void DeleteBuilding()
     {
-        spawnedBuildings[0].SetActive(false);
-        spawnedBuildings.RemoveAt(0);
+        backgroundBuildings[0].SetActive(false);
+        backgroundBuildings.RemoveAt(0);
     }
 }

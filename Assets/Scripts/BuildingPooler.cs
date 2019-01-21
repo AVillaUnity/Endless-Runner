@@ -2,42 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildingPooler : MonoBehaviour
+public class BuildingPooler : ObjectPooler
 {
-    public int initialNumOfObjects = 16;
-    public GameObject[] objectToSpawn;
-    public Transform objectParent;
 
-    private List<GameObject> objectList;
+    private string lastBuildingSpawned = "";
 
-    void Start()
+    public override void Awake()
     {
-        objectList = new List<GameObject>();
-        for (int i = 0; i < initialNumOfObjects; i++)
-        {
-            CreateObject(objectToSpawn[i % objectToSpawn.Length]);
-        }
+        base.Awake();
     }
 
-    private GameObject CreateObject(GameObject objectToSpawn)
-    {
-        GameObject newObject = Instantiate(objectToSpawn, objectParent);
-        newObject.SetActive(false);
-        objectList.Add(newObject);
-
-        return newObject;
-    }
-
-    public GameObject GetObject(int objectIndex)
+    public Building GetBuilding()
     {
         for (int i = 0; i < objectList.Count; i++)
         {
-            if (objectList[i].activeSelf == false && objectList[i].tag == objectToSpawn[objectIndex].tag)
+            if (objectList[i].activeSelf == false && objectList[i].tag != lastBuildingSpawned)
             {
-                return objectList[i];
+                Building building = objectList[i].GetComponent<Building>();
+                building.building = objectList[i];
+                building.poolerIndex = i;
+                lastBuildingSpawned = objectList[i].tag;
+                return building;
             }
         }
+        return CreateBuilding();
+    }
 
-        return CreateObject(objectToSpawn[objectIndex]);
+    public Building CreateBuilding()
+    {
+        foreach(GameObject buildingToSpawn in objectToSpawn)
+        {
+            if(buildingToSpawn.tag != lastBuildingSpawned)
+            {
+                GameObject newBuilding = Instantiate(buildingToSpawn, objectParent);
+
+                Building building = newBuilding.GetComponent<Building>();
+                building.building = newBuilding;
+                objectList.Add(newBuilding);
+                building.poolerIndex = objectList.Count - 1;
+                newBuilding.SetActive(false);
+
+                return building;
+            }
+        }
+        print("Building not found");
+        return null;
+    }
+
+    public void DeactiveBuilding(int index)
+    {
+        objectList[index].SetActive(false);
     }
 }

@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1218648186}
   - component: {fileID: 4192313460853743309}
-  - component: {fileID: 1328742309014670739}
   - component: {fileID: 4938632086856717597}
+  - component: {fileID: 3596693053219063278}
   m_Layer: 0
-  m_Name: Building (1)
+  m_Name: Building_LM
   m_TagString: Short Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218648187}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -227.8}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5513347088396630855}
@@ -61,19 +61,6 @@ MonoBehaviour:
   - {fileID: 7275458488012799432}
   - {fileID: 4901858719241156605}
   - {fileID: 2794820177121367007}
---- !u!114 &1328742309014670739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218648187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b5d8f34add4deb48982da8f2cb0c516, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingLength: 5.5
 --- !u!114 &4938632086856717597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,7 +77,27 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   lightmapID: 2
+--- !u!114 &3596693053219063278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218648187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5d8f34add4deb48982da8f2cb0c516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingLength: 4.3
+  building: {fileID: 0}
+  index: 0
 --- !u!1 &278110011355632937
 GameObject:
   m_ObjectHideFlags: 0

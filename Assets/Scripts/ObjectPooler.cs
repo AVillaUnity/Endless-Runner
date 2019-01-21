@@ -8,9 +8,9 @@ public class ObjectPooler : MonoBehaviour
     public GameObject[] objectToSpawn;
     public Transform objectParent;
 
-    private List<GameObject> objectList;
+    protected List<GameObject> objectList;
 
-    private void Awake()
+    public virtual void Awake()
     {
         objectList = new List<GameObject>();
         for (int i = 0; i < initialNumOfObjects; i++)
@@ -49,7 +49,4 @@ public class ObjectPooler : MonoBehaviour
 
         return CreateObject();
     }
-
-
-
 }

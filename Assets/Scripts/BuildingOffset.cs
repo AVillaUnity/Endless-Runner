@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BuildingOffset : MonoBehaviour
 {
+    public Spawner buildingManager;
+
 
     private GameObject player;
     private CameraMovement cm;
@@ -22,11 +24,11 @@ public class BuildingOffset : MonoBehaviour
         transform.position = playerPosition + Offset;
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Building")
+        if (other.gameObject.tag == "Building")
         {
-            Destroy(other.transform.parent.gameObject);
+            buildingManager.DeleteBuilding(other.gameObject.GetComponentInParent<Building>().spawnerIndex);
         }
     }
 }

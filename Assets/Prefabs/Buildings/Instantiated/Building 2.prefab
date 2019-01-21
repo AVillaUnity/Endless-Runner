@@ -165,7 +165,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2139339084569049047}
   - component: {fileID: 2137242875008781439}
-  - component: {fileID: 3744485525644835106}
   m_Layer: 0
   m_Name: Building 2
   m_TagString: Medium Building
@@ -215,19 +214,6 @@ MonoBehaviour:
   - {fileID: 8290739851936651457}
   - {fileID: 5423489067974693892}
   - {fileID: 4580005497925752326}
---- !u!114 &3744485525644835106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7484642079279912649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b5d8f34add4deb48982da8f2cb0c516, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingLength: 10
 --- !u!1 &9024298069535733482
 GameObject:
   m_ObjectHideFlags: 0
