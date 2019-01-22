@@ -260,6 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5232409827324877924}
   - component: {fileID: 5225362498110924748}
+  - component: {fileID: 1015891269796325568}
   m_Layer: 0
   m_Name: Building 3
   m_TagString: Tall Building
@@ -299,16 +300,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   percentToDropFuel: 70
   percentToDropSuperFuel: 10
-  fullFuel: {fileID: 1919633864209010970, guid: 619ab7d10fc2a5848b12fb61d55b5cb2,
-    type: 3}
-  halfFuel: {fileID: 1919633864209010970, guid: 264b09030d82d0840af0a2687aeea6b3,
-    type: 3}
-  superFuel: {fileID: 1919633864209010970, guid: 858f1b91e247aa049b963eb8bca69833,
-    type: 3}
   spawnPoints:
   - {fileID: 2748228677685048178}
   - {fileID: 2191333277451042743}
   - {fileID: 7683781086154718645}
+  pooler: {fileID: 0}
+--- !u!114 &1015891269796325568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3671558235502230906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5d8f34add4deb48982da8f2cb0c516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingLength: 6
+  building: {fileID: 0}
+  poolerIndex: 0
+  spawnerIndex: 0
 --- !u!1001 &8362097304987107474
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8415913305944959364}
-  - component: {fileID: 32045293}
   - component: {fileID: 8415913305944959363}
   m_Layer: 0
   m_Name: Building Manager
@@ -32,24 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &32045293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8415913305944959362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbed3e39b20b32f458bb88975c41762b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialNumOfObjects: 30
-  objectToSpawn:
-  - {fileID: 1218648187, guid: 0465816d8b8aa8448859d8e852a568ec, type: 3}
-  - {fileID: 1329503660, guid: 24b31b6ed65001240a2499f802ff866f, type: 3}
-  - {fileID: 680759774, guid: a966a350c54ad6b4595ee9527117711e, type: 3}
-  objectParent: {fileID: 8415913305944959364}
 --- !u!114 &8415913305944959363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,3 +46,4 @@ MonoBehaviour:
   maxBuildingLength: 7.1
   gapSpace: 1.5
   maxBuildingsSpawned: 25
+  objectPooler: {fileID: 0}

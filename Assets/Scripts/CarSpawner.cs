@@ -30,6 +30,7 @@ public class CarSpawner : MonoBehaviour
         GameObject car = objectPooler.GetObject();
         car.transform.position = transform.position;
         car.transform.rotation = transform.rotation;
+        car.transform.parent = objectPooler.activeParent;
         car.SetActive(true);
     }
 

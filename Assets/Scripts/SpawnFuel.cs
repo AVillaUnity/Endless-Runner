@@ -8,17 +8,21 @@ public class SpawnFuel : MonoBehaviour
     public float percentToDropFuel = 50;
     [Range(0.0f, 100.0f)]
     public float percentToDropSuperFuel = 10;
-    public GameObject fullFuel;
-    public GameObject halfFuel;
-    public GameObject superFuel;
     public Transform[] spawnPoints;
+
+    [HideInInspector]
+    public ObjectPooler pooler;
+
+    public bool HasFuel { get; set; }
 
     void Start()
     {
-        PlaceFuel();
+        pooler = GameObject.FindGameObjectWithTag("Fuel Pooler").GetComponent<ObjectPooler>();
+        HasFuel = false;
+        PickFuel();
     }
 
-    private void PlaceFuel()
+    public void PickFuel()
     {
         float chance = Random.Range(0.0f, 1.0f);
         int spawnPoint = Random.Range(0, spawnPoints.Length);
@@ -28,13 +32,25 @@ public class SpawnFuel : MonoBehaviour
             float fuelChance = Random.Range(0.0f, 1.0f);
             if (fuelChance >= 1 - (percentToDropSuperFuel / 100.0f))
             {
-                Instantiate(superFuel, spawnPoints[spawnPoint].position, Quaternion.identity, spawnPoints[spawnPoint]);
+                PlaceFuel("Super", spawnPoint);
             }
             else
             {
-                GameObject fuelToSpawn = (Random.Range(0.0f, 1.0f) >= 0.5f) ? fullFuel : halfFuel;
-                Instantiate(fuelToSpawn, spawnPoints[spawnPoint].position, Quaternion.identity, spawnPoints[spawnPoint]);
+                string fuelToSpawn = (Random.Range(0.0f, 1.0f) >= 0.5f) ? "Full" : "Half";
+                PlaceFuel(fuelToSpawn, spawnPoint);
             }
+
+            HasFuel = true;
         }
+    }
+
+    void PlaceFuel(string fuel, int spawnPoint)
+    {
+        GameObject f = pooler.GetObject(fuel);
+        f.transform.position = spawnPoints[spawnPoint].position;
+        f.transform.rotation = Quaternion.identity;
+        f.transform.parent = pooler.activeParent;
+        f.GetComponent<Fuel>().spawner = this;
+        f.SetActive(true);
     }
 }

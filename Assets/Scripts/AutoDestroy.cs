@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class AutoDestroy : MonoBehaviour
 {
@@ -8,5 +9,4 @@ public class AutoDestroy : MonoBehaviour
     {
         Destroy(this.gameObject, timeToDestroy);
     }
-
 }

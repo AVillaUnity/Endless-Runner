@@ -120,17 +120,6 @@ public class PlayerMovement : MonoBehaviour
     private void Fall()
     {
         animator.SetBool("Jump", false);
-
-        Ray ray = new Ray(transform.position, Vector3.down);
-        RaycastHit raycastHit = new RaycastHit();
-
-        if(Physics.Raycast(ray, out raycastHit))
-        {
-            if(raycastHit.distance > 1.75)
-            {
-                animator.MatchTarget(raycastHit.point, Quaternion.identity, AvatarTarget.Root, new MatchTargetWeightMask(new Vector3(0, 1, 0), 0), 0f, .05f);
-            }
-        }
     }
 
     private void CalculateForwardForce()

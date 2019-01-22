@@ -6,7 +6,9 @@ public class ObjectPooler : MonoBehaviour
 {
     public int initialNumOfObjects = 10;
     public GameObject[] objectToSpawn;
-    public Transform objectParent;
+
+    public Transform inactiveParent;
+    public Transform activeParent;
 
     protected List<GameObject> objectList;
 
@@ -15,21 +17,20 @@ public class ObjectPooler : MonoBehaviour
         objectList = new List<GameObject>();
         for (int i = 0; i < initialNumOfObjects; i++)
         {
-            CreateObject();
+            CreateObject(i);
         }
     }
 
-    private GameObject CreateObject()
+    private GameObject CreateObject(int i)
     {
         GameObject newObject;
         if (objectToSpawn.Length == 1)
         {
-            newObject = Instantiate(objectToSpawn[0], objectParent);
+            newObject = Instantiate(objectToSpawn[0], inactiveParent);
         }
         else
         {
-            int index = Random.Range(0, objectToSpawn.Length);
-            newObject = Instantiate(objectToSpawn[index], objectParent);
+            newObject = Instantiate(objectToSpawn[i % objectToSpawn.Length], inactiveParent);
         }
         newObject.SetActive(false);
         objectList.Add(newObject);
@@ -37,16 +38,51 @@ public class ObjectPooler : MonoBehaviour
         return newObject;
     }
 
-    public GameObject GetObject()
+    private GameObject CreateObject(string tag)
     {
-        for(int i = 0; i < objectList.Count; i++)
+        GameObject newObject;
+        foreach(GameObject g in objectToSpawn)
         {
-            if(objectList[i].activeSelf == false)
+            if(g.tag == tag)
             {
-                return objectList[i];
+                newObject = Instantiate(g, inactiveParent);
+                newObject.SetActive(false);
+                objectList.Add(newObject);
+                return newObject;
             }
         }
+        print("object could not be created");
+        return null;
+    }
 
-        return CreateObject();
+    public GameObject GetObject()
+    {
+        if(inactiveParent.childCount <= 0)
+        {
+            return CreateObject(0);
+        }
+        else
+        {
+            return inactiveParent.GetChild(0).gameObject;
+        }
+    }
+
+    public GameObject GetObject(string tag)
+    {
+        if (inactiveParent.childCount <= 0)
+        {
+            return CreateObject(tag);
+        }
+        else
+        {
+            foreach(Transform t in inactiveParent)
+            {
+                if(t.tag == tag)
+                {
+                    return t.gameObject;
+                }
+            }
+            return CreateObject(tag);
+        }
     }
 }

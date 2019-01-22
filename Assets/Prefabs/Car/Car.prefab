@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &6738746967821256136
 Transform:
@@ -91,7 +91,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &6537774663991968460
 Transform:
@@ -129,7 +129,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &7225701147260178297
 Transform:
@@ -301,7 +301,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &7266398968500353790
 Transform:
@@ -337,7 +337,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &5605367161138754795
 Transform:
@@ -414,7 +414,7 @@ GameObject:
   m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &1972983691538948196
 Transform:
@@ -491,7 +491,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &925839848938038790
 Transform:
@@ -568,7 +568,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &1789781446815494199
 Transform:
@@ -645,7 +645,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &2063161614103980811
 Transform:
@@ -718,6 +718,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Headlight Left
       objectReference: {fileID: 0}
+    - target: {fileID: 9218318299385490561, guid: 5025d6ee0a80e194daca3db622095247,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5057172253611340488, guid: 5025d6ee0a80e194daca3db622095247,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -773,6 +778,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2574391706869560691, guid: 5025d6ee0a80e194daca3db622095247,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5025d6ee0a80e194daca3db622095247, type: 3}
 --- !u!4 &6151630375731922660 stripped
@@ -792,6 +802,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Taillight Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247764444064011560, guid: 5d08fcde4892af543bb1061849e3fd93,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4282374050331518367, guid: 5d08fcde4892af543bb1061849e3fd93,
         type: 3}
@@ -868,6 +883,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Taillight Right
       objectReference: {fileID: 0}
+    - target: {fileID: 5247764444064011560, guid: 5d08fcde4892af543bb1061849e3fd93,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4282374050331518367, guid: 5d08fcde4892af543bb1061849e3fd93,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -943,6 +963,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Headlight Right
       objectReference: {fileID: 0}
+    - target: {fileID: 9218318299385490561, guid: 5025d6ee0a80e194daca3db622095247,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5057172253611340488, guid: 5025d6ee0a80e194daca3db622095247,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -997,6 +1022,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2574391706869560691, guid: 5025d6ee0a80e194daca3db622095247,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5025d6ee0a80e194daca3db622095247, type: 3}

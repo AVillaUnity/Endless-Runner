@@ -14,18 +14,37 @@ public class BuildingPooler : ObjectPooler
 
     public Building GetBuilding()
     {
-        for (int i = 0; i < objectList.Count; i++)
+        int numOfChildren = inactiveParent.childCount;
+        if(numOfChildren <= 0)
         {
-            if (objectList[i].activeSelf == false && objectList[i].tag != lastBuildingSpawned)
-            {
-                Building building = objectList[i].GetComponent<Building>();
-                building.building = objectList[i];
-                building.poolerIndex = i;
-                lastBuildingSpawned = objectList[i].tag;
-                return building;
-            }
+            return CreateBuilding();
         }
-        return CreateBuilding();
+        else
+        {
+            int randomChild = Random.Range(0, numOfChildren);
+            GameObject randomObject = inactiveParent.GetChild(randomChild).gameObject;
+            while (randomObject.tag == lastBuildingSpawned)
+            {
+                randomChild = Random.Range(0, numOfChildren);
+                randomObject = inactiveParent.GetChild(randomChild).gameObject;
+            }
+            Building building = randomObject.GetComponent<Building>();
+            building.building = randomObject;
+            building.poolerIndex = -1;
+
+            for(int i = 0; i < objectList.Count; i++)
+            {
+                if(GameObject.ReferenceEquals(randomObject, objectList[i]))
+                {
+                    building.poolerIndex = i;
+                }
+            }
+
+            if(building.poolerIndex == -1) { print("wtf"); }
+
+            lastBuildingSpawned = randomObject.tag;
+            return building;
+        }
     }
 
     public Building CreateBuilding()
@@ -34,7 +53,7 @@ public class BuildingPooler : ObjectPooler
         {
             if(buildingToSpawn.tag != lastBuildingSpawned)
             {
-                GameObject newBuilding = Instantiate(buildingToSpawn, objectParent);
+                GameObject newBuilding = Instantiate(buildingToSpawn, inactiveParent);
 
                 Building building = newBuilding.GetComponent<Building>();
                 building.building = newBuilding;
@@ -52,5 +71,6 @@ public class BuildingPooler : ObjectPooler
     public void DeactiveBuilding(int index)
     {
         objectList[index].SetActive(false);
+        objectList[index].transform.parent = inactiveParent;
     }
 }

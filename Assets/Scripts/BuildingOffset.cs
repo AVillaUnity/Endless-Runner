@@ -26,9 +26,16 @@ public class BuildingOffset : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Building")
+        GameObject hit = other.gameObject;
+        if (hit.tag == "Building")
         {
-            buildingManager.DeleteBuilding(other.gameObject.GetComponentInParent<Building>().spawnerIndex);
+            buildingManager.DeleteBuilding(hit.GetComponentInParent<Building>().spawnerIndex);
+        }
+        else if(hit.GetComponent<Fuel>())
+        {
+            hit.GetComponent<Fuel>().spawner.HasFuel = false;
+            hit.transform.parent = hit.GetComponentInParent<ObjectPooler>().inactiveParent;
+            hit.SetActive(false);
         }
     }
 }

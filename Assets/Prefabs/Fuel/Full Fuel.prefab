@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1919633864209010969}
   m_Layer: 0
   m_Name: Full Fuel
-  m_TagString: Untagged
+  m_TagString: Full
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,6 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotatingSpeed: 20
   refillAmount: 100
+  spawner: {fileID: 0}
 --- !u!1 &3547932138944801350
 GameObject:
   m_ObjectHideFlags: 0

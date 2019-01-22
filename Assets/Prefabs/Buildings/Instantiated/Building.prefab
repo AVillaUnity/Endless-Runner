@@ -167,6 +167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1196803415014263491}
   - component: {fileID: 1189672540232790379}
+  - component: {fileID: 4307795929468026162}
   m_Layer: 0
   m_Name: Building
   m_TagString: Short Building
@@ -182,7 +183,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7707164871016917981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.068}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5915302828719584683}
@@ -206,16 +207,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   percentToDropFuel: 70
   percentToDropSuperFuel: 10
-  fullFuel: {fileID: 1919633864209010970, guid: 619ab7d10fc2a5848b12fb61d55b5cb2,
-    type: 3}
-  halfFuel: {fileID: 1919633864209010970, guid: 264b09030d82d0840af0a2687aeea6b3,
-    type: 3}
-  superFuel: {fileID: 1919633864209010970, guid: 858f1b91e247aa049b963eb8bca69833,
-    type: 3}
   spawnPoints:
   - {fileID: 9089684846500210133}
   - {fileID: 5075426350343792912}
   - {fileID: 3649289475555453714}
+  pooler: {fileID: 0}
+--- !u!114 &4307795929468026162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707164871016917981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5d8f34add4deb48982da8f2cb0c516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingLength: 4.2
+  building: {fileID: 0}
+  poolerIndex: 0
+  spawnerIndex: 0
 --- !u!1 &8122528798496569278
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour
     public float maxBuildingLength = 7.5f;
     public float gapSpace = 3.0f;
     public int maxBuildingsSpawned = 16;
+    public GameObject objectPooler;
 
     private BuildingPooler pooler;
     private List<Building> spawnedBuildings;
@@ -19,7 +20,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
-        pooler = GetComponent<BuildingPooler>();
+        pooler = objectPooler.GetComponent<BuildingPooler>();
         player = GameObject.FindGameObjectWithTag("Player");
         spawnedBuildings = new List<Building>();
         for(int i = 0; i < maxBuildingsSpawned; i++)
@@ -45,7 +46,7 @@ public class Spawner : MonoBehaviour
 
         buildingToSpawn.transform.position = transform.forward * spawnLocation;
         buildingToSpawn.transform.rotation = Quaternion.identity;
-        buildingToSpawn.transform.parent = transform;
+        buildingToSpawn.transform.parent = pooler.activeParent;
         buildingToSpawn.SetActive(true);
 
         spawnLocation += pooledBuilding.buildingLength + gapSpace;

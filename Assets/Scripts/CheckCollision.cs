@@ -31,7 +31,9 @@ public class CheckCollision : MonoBehaviour
                 jetPack.IncrementFuel(fuel.refillAmount);
                 audioManager.Play("Fuel");
             }
-            Destroy(hit);
+            fuel.spawner.HasFuel = false;
+            hit.transform.parent = hit.GetComponentInParent<ObjectPooler>().inactiveParent;
+            hit.SetActive(false);
         }
 
         if (hit.tag == "Death")

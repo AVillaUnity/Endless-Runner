@@ -12,6 +12,9 @@ TagManager:
   - Death
   - Fire
   - Car
+  - Full
+  - Half
+  - Fuel Pooler
   layers:
   - Default
   - TransparentFX
