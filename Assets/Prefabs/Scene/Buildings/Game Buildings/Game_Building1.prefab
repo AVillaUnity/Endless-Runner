@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 4961163443842905534}
   m_Layer: 0
   m_Name: Game_Building1
-  m_TagString: Untagged
+  m_TagString: Short Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 4207070591413788118}
   m_Layer: 0
   m_Name: Mesh Collider
-  m_TagString: Death
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -317,10 +317,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4659333428266400556, guid: 158d4be1412afe54ba5278fbea13f05b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 9161846933373145077, guid: 158d4be1412afe54ba5278fbea13f05b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.92
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: 9161846933373145077, guid: 158d4be1412afe54ba5278fbea13f05b,
         type: 3}

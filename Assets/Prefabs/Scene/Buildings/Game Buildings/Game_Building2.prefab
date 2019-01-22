@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 1494202594940320934}
   m_Layer: 0
   m_Name: Mesh Collider
-  m_TagString: Death
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 83769767253748459}
   m_Layer: 0
   m_Name: Game_Building2
-  m_TagString: Untagged
+  m_TagString: Tall Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

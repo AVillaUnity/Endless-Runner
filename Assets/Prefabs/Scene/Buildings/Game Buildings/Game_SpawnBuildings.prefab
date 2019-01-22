@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5793158114141224721}
   m_Layer: 0
   m_Name: Mesh Collider
-  m_TagString: Death
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,8 +120,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 14, z: 29.776901}
-  m_Center: {x: 0, y: 6.63, z: -16.47586}
+  m_Size: {x: 1, y: 17.750053, z: 29.776901}
+  m_Center: {x: 0, y: 8.505028, z: -16.47586}
 --- !u!1 &7574786756103024246
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,6 +236,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.5767502
       objectReference: {fileID: 0}
+    - target: {fileID: 2675232295314903362, guid: db8ec0ef3baa49143bf62c5a5c6bf925,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683463718788555834, guid: db8ec0ef3baa49143bf62c5a5c6bf925,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540955545274354266, guid: db8ec0ef3baa49143bf62c5a5c6bf925,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2875908445045780184, guid: db8ec0ef3baa49143bf62c5a5c6bf925,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db8ec0ef3baa49143bf62c5a5c6bf925, type: 3}
 --- !u!4 &6462522093728541951 stripped
@@ -258,8 +278,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4659333428266400556, guid: 158d4be1412afe54ba5278fbea13f05b,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9161846933373145077, guid: 158d4be1412afe54ba5278fbea13f05b,
         type: 3}
@@ -314,6 +334,26 @@ PrefabInstance:
     - target: {fileID: 9161846933373145077, guid: 158d4be1412afe54ba5278fbea13f05b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 301179244100889055, guid: 158d4be1412afe54ba5278fbea13f05b,
+        type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.36611256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1617432393287526893, guid: 158d4be1412afe54ba5278fbea13f05b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5446173705487873648, guid: 158d4be1412afe54ba5278fbea13f05b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8302865304124704413, guid: 158d4be1412afe54ba5278fbea13f05b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
