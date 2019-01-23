@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class ParticleControl : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class ParticleControl : MonoBehaviour
     {
         var emission = ps.emission;
 
-        if (Input.GetButton("Jump"))
+        if (CrossPlatformInputManager.GetButton("Jump"))
         {
             emissionAmount += Time.deltaTime * speedToEmmision;
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class GeneratePuff : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class GeneratePuff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(controller.isGrounded && Input.GetButtonDown("Jump") && jetPack.CurrentFuel > 0 && pm.PlayerMoving)
+        if(controller.isGrounded && CrossPlatformInputManager.GetButtonDown("Jump") && jetPack.CurrentFuel > 0 && pm.PlayerMoving)
         {
             ActivatePuff();
             StartCoroutine(DeactivatePuff());

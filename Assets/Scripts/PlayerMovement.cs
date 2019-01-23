@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -70,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         CalculateVerticalForce();
         CalculateForwardForce();
 
-        if (Input.GetAxis("Horizontal") > 0.0f && Input.GetButton("Jump"))
+        if (CrossPlatformInputManager.GetAxis("Horizontal") > 0.0f && CrossPlatformInputManager.GetButton("Jump"))
         {
             speed += Time.deltaTime * 20;
         }
@@ -96,9 +97,9 @@ public class PlayerMovement : MonoBehaviour
     private void CalculateVerticalForce()
     {
         float hasFuel = (jetPack.CurrentFuel > 0) ? 1.0f : 0.0f;
-        jumpForce += hasFuel * ((Time.deltaTime * Input.GetAxis("Jump")) + (initialJumpForce * Input.GetAxisRaw("Jump")));
+        jumpForce += hasFuel * ((Time.deltaTime * CrossPlatformInputManager.GetAxis("Jump")) + (initialJumpForce * CrossPlatformInputManager.GetAxisRaw("Jump")));
 
-        if (Input.GetButton("Jump") && jetPack.CurrentFuel > 0)
+        if (CrossPlatformInputManager.GetButton("Jump") && jetPack.CurrentFuel > 0)
         {
             gravity -= Time.deltaTime * initialGravity;
             animator.SetBool("Jump", true);
@@ -123,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
     private void CalculateForwardForce()
     {
         float forwardGravity = 3;
-        float forwardVelocity = Mathf.Clamp(Input.GetAxisRaw("Horizontal"), 0, 1.0f);
+        float forwardVelocity = Mathf.Clamp(CrossPlatformInputManager.GetAxisRaw("Horizontal"), 0, 1.0f);
         
         forwardForce += Time.deltaTime * forwardGravity * forwardVelocity;
         forwardForce -= Time.deltaTime * forwardGravity / 3;
