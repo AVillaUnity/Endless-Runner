@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
@@ -68,7 +67,6 @@ public class CameraMovement : MonoBehaviour
             transform.rotation = Quaternion.Lerp(oldRotation, destination.rotation, timeElapsed);
             timeElapsed += Time.deltaTime * (1 / transitionSpeed);
             Transitioning = true;
-            //print(timeElapsed);
             yield return null;
         }
 

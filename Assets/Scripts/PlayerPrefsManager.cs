@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class PlayerPrefsManager : MonoBehaviour {
 
@@ -16,8 +13,6 @@ public class PlayerPrefsManager : MonoBehaviour {
     {
         if (value >= 0)
             PlayerPrefs.SetFloat(HIGHSCORE_KEY, value);
-        else
-            Debug.LogError("Value not greater than or equal to 0");
     }
 
     public static float GetHighscore()

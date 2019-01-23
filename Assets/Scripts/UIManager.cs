@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour {
@@ -20,7 +19,10 @@ public class UIManager : MonoBehaviour {
     public Canvas GameCanvas;
     public Canvas LoseCanvas;
     public Canvas PauseCanvas;
+    public Canvas InstructionCanvas;
     public Animator menuAnimator;
+
+    private bool showedInstructions = false;
 
     private IEnumerator fadeOut;
 
@@ -31,7 +33,7 @@ public class UIManager : MonoBehaviour {
         GameCanvas.gameObject.SetActive(true);
         LoseCanvas.gameObject.SetActive(true);
         PauseCanvas.gameObject.SetActive(true);
-        //SplashScreen.gameObject.SetActive(true);
+        InstructionCanvas.gameObject.SetActive(true);
 
         fadeOut = FadeOut();
     }
@@ -44,6 +46,7 @@ public class UIManager : MonoBehaviour {
         GameCanvas.enabled = false;
         PauseCanvas.enabled = false;
         WorldCanvas.enabled = false;
+        InstructionCanvas.enabled = false;
         MainMenuCanvas.enabled = true;
 
         Invoke("ShowMainMenu", SplashScreen.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
@@ -58,6 +61,7 @@ public class UIManager : MonoBehaviour {
         GameCanvas.enabled = false;
         PauseCanvas.enabled = false;
         WorldCanvas.enabled = false;
+        InstructionCanvas.enabled = false;
         MainMenuCanvas.enabled = true;
     }
 
@@ -69,6 +73,13 @@ public class UIManager : MonoBehaviour {
         GameCanvas.enabled = true;
         PauseCanvas.enabled = false;
         WorldCanvas.enabled = true;
+
+        if (!showedInstructions)
+        {
+            InstructionCanvas.enabled = true;
+            InstructionCanvas.GetComponent<Animator>().SetTrigger("Fade");
+            showedInstructions = true;
+        }
     }
 
     public void ShowLoseCanvas()
@@ -76,6 +87,7 @@ public class UIManager : MonoBehaviour {
         StopAllCoroutines();
 
         SplashScreen.enabled = false;
+        InstructionCanvas.enabled = false;
         LoseCanvas.enabled = true;
         GameCanvas.enabled = false;
         PauseCanvas.enabled = false;
@@ -86,6 +98,7 @@ public class UIManager : MonoBehaviour {
     public void ShowPauseCanvas()
     {
         SplashScreen.enabled = false;
+        InstructionCanvas.enabled = false;
         LoseCanvas.enabled = false;
         GameCanvas.enabled = false;
         PauseCanvas.enabled = true;

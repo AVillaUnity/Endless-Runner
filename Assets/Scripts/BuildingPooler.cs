@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BuildingPooler : ObjectPooler
 {
@@ -40,8 +38,6 @@ public class BuildingPooler : ObjectPooler
                 }
             }
 
-            if(building.poolerIndex == -1) { print("wtf"); }
-
             lastBuildingSpawned = randomObject.tag;
             return building;
         }
@@ -64,7 +60,6 @@ public class BuildingPooler : ObjectPooler
                 return building;
             }
         }
-        print("Building not found");
         return null;
     }
 
